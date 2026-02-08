@@ -1,184 +1,161 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Red Dolphin Pet Grooming</title>
+  <meta charset="UTF-8" />
+  <title>Red Dolphin Pet Grooming</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",Arial;
-  background:#0b0f19;
-  color:#fff;
-}
-header{
-  background:#121a2b;
-  padding:20px;
-}
-main{
-  padding:20px;
-  max-width:900px;
-  margin:auto;
-}
-.card{
-  background:#121a2b;
-  padding:20px;
-  border-radius:14px;
-  margin-bottom:20px;
-}
-.btn{
-  display:inline-block;
-  margin:8px 8px 8px 0;
-  padding:12px 18px;
-  border-radius:999px;
-  background:#4da3ff;
-  color:#000;
-  text-decoration:none;
-  font-weight:bold;
-}
-.btn.outline{
-  background:transparent;
-  border:1px solid #4da3ff;
-  color:#fff;
-}
-input,select,textarea{
-  width:100%;
-  padding:10px;
-  margin-top:6px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,.2);
-  background:#0b0f19;
-  color:#fff;
-}
-label{font-size:14px;}
-.fab{
-  position:fixed;
-  right:16px;
-  bottom:16px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-</style>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica", Arial;
+      background: #0f172a;
+      color: #fff;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 24px;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    h2 {
+      margin-top: 40px;
+      font-size: 24px;
+    }
+    p {
+      line-height: 1.6;
+      color: #e5e7eb;
+    }
+    .info {
+      margin: 16px 0;
+      font-size: 16px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      margin: 8px 8px 0 0;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .call { background: #22c55e; color: #000; }
+    .sms { background: #38bdf8; color: #000; }
+
+    form {
+      background: #020617;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 16px;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+    }
+    textarea { resize: vertical; }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      background: #f97316;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Floating buttons */
+    .fab {
+      position: fixed;
+      right: 16px;
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .fab a {
+      padding: 14px 16px;
+      border-radius: 999px;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,.4);
+    }
+  </style>
 </head>
 
 <body>
+  <div class="container">
+    <h1>Red Dolphin Pet Grooming</h1>
+    <p>专业宠物美容服务 · Friendly · Experienced · Reliable</p>
 
-<header>
-  <h1>🐾 Red Dolphin Pet Grooming</h1>
-</header>
+    <div class="info">
+      📍 地址：1680 E Broadway Suite E, Chula Vista, CA<br />
+      📞 电话：619-754-0193
+    </div>
 
-<main>
+    <a class="btn call" href="tel:+16197540193">📞 Call</a>
+    <a class="btn sms" href="sms:+16197540193">💬 SMS</a>
 
-  <div class="card">
-    <h2>专业宠物美容服务</h2>
-    <p>地址：1680 E Broadway Suite E, Chula Vista, CA</p>
-    <p>电话：619-754-0193</p>
+    <h2>在线预约 / Booking</h2>
 
-    <a class="btn" href="tel:+16197540193">📞 Call</a>
-    <a class="btn outline"
-       href="sms:+16197540193?body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">
-       💬 SMS
-    </a>
-  </div>
+    <form onsubmit="sendBooking(event)">
+      <label>主人姓名</label>
+      <input required placeholder="Your name" />
 
-  <div class="card">
-    <h3>在线预约（提交后将自动发送短信给店里）</h3>
+      <label>联系电话</label>
+      <input required placeholder="Phone number" />
 
-    <form id="bookingForm">
-      <p>
-        <label>姓名 / Name</label>
-        <input name="name" required>
-      </p>
+      <label>宠物类型</label>
+      <select>
+        <option>Dog</option>
+        <option>Cat</option>
+      </select>
 
-      <p>
-        <label>电话 / Phone</label>
-        <input name="phone" required>
-      </p>
+      <label>服务类型</label>
+      <select>
+        <option>Full Grooming</option>
+        <option>Bath Only</option>
+        <option>Nail Trim</option>
+      </select>
 
-      <p>
-        <label>宠物类型 / Pet</label>
-        <select name="pet" required>
-          <option value="">请选择</option>
-          <option>Dog 狗</option>
-          <option>Cat 猫</option>
-        </select>
-      </p>
+      <label>预约日期</label>
+      <input type="date" required />
 
-      <p>
-        <label>体型 / Size</label>
-        <select name="size" required>
-          <option value="">请选择</option>
-          <option>Small 小</option>
-          <option>Medium 中</option>
-          <option>Large 大</option>
-        </select>
-      </p>
+      <label>备注</label>
+      <textarea rows="3" placeholder="Any special requests"></textarea>
 
-      <p>
-        <label>服务项目 / Service</label>
-        <select name="service" required>
-          <option value="">请选择</option>
-          <option>Bath 洗澡</option>
-          <option>Bath + Haircut 洗澡+剪毛</option>
-          <option>Haircut 剪毛</option>
-          <option>Nails 指甲</option>
-        </select>
-      </p>
-
-      <p>
-        <label>日期 / Date</label>
-        <input type="date" name="date" required>
-      </p>
-
-      <p>
-        <label>时间 / Time</label>
-        <input type="time" name="time" required>
-      </p>
-
-      <p>
-        <label>备注 / Notes（可选）</label>
-        <textarea name="notes" rows="4"></textarea>
-      </p>
-
-      <button class="btn" type="submit">✅ 提交预约</button>
-      <p id="bookingMsg" style="margin-top:10px;"></p>
+      <button type="submit">提交预约</button>
     </form>
   </div>
 
-</main>
+  <!-- Floating Call / SMS -->
+  <div class="fab">
+    <a class="call" href="tel:+16197540193">📞 Call</a>
+    <a class="sms" href="sms:+16197540193">💬 SMS</a>
+  </div>
 
-<div class="fab">
-  <a class="btn" href="tel:+16197540193">📞 Call</a>
-  <a class="btn outline"
-     href="sms:+16197540193?body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">
-     💬 SMS
-  </a>
-</div>
-
-<script>
-document.getElementById("bookingForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  const d = new FormData(e.target);
-  const msg =
-`Pet Grooming Booking
-Name: ${d.get("name")}
-Phone: ${d.get("phone")}
-Pet: ${d.get("pet")}
-Size: ${d.get("size")}
-Service: ${d.get("service")}
-Date: ${d.get("date")}
-Time: ${d.get("time")}
-Notes: ${d.get("notes")||""}`;
-
-  document.getElementById("bookingMsg").textContent =
-    "✅ 已生成预约信息，正在打开短信…";
-
-  window.location.href =
-    "sms:+16197540193?body=" + encodeURIComponent(msg);
-});
-</script>
-
+  <script>
+    function sendBooking(e) {
+      e.preventDefault();
+      alert(
+        "预约已填写完成！\n\n请点击下方 SMS 或 Call 与我们确认时间。\nThank you!"
+      );
+    }
+  </script>
 </body>
 </html>
