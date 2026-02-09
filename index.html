@@ -36,10 +36,6 @@
     .menu{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
     .menu a{padding:8px 10px;border-radius:10px;color:var(--muted);text-decoration:none;border:1px solid transparent}
     .menu a:hover{color:var(--text);border-color:var(--line);background:rgba(255,255,255,.04)}
-    .lang-btn{
-      padding:8px 10px;border-radius:10px;border:1px solid var(--line);
-      background:rgba(255,255,255,.04);color:var(--text);cursor:pointer
-    }
 
     .hero{padding:28px 0 12px}
     .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
@@ -117,15 +113,14 @@
     <div class="nav-inner">
       <div class="brand">
         <span class="dot"></span>
-        <span id="t_brand">Red Dolphin Pet Grooming</span>
+        <span>Red Dolphin Pet Grooming</span>
       </div>
 
       <div class="menu">
-        <a href="#prices" id="t_nav_prices">Prices</a>
-        <a href="#book" id="t_nav_book">Book Now</a>
-        <a href="#location" id="t_nav_location">Location</a>
-        <a href="#contact" id="t_nav_contact">Contact</a>
-        <button class="lang-btn" id="langBtn" type="button">中文 / EN</button>
+        <a href="#prices">Prices</a>
+        <a href="#book">Book Now</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   </div>
@@ -135,31 +130,29 @@
     <div class="hero">
       <div class="hero-grid">
         <div class="card">
-          <span class="pill" id="t_pill">Live chat • SMS booking • Prices</span>
-          <h1 id="t_title">Professional Pet Grooming Services</h1>
-          <div class="sub" id="t_sub">
+          <span class="pill">Live chat • SMS booking • Prices</span>
+          <h1>Professional Pet Grooming Services</h1>
+          <div class="sub">
             Address: <b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>
             Phone: <b>(619) 754-0193</b>
           </div>
           <div class="row">
-            <a class="btn success" href="tel:+16197540193" id="t_call_btn">📞 Call</a>
-            <a class="btn primary" href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming." id="t_sms_btn">💬 SMS</a>
-            <a class="btn ghost" href="#book" id="t_book_btn">📅 Book Now</a>
+            <a class="btn success" href="tel:+16197540193">📞 Call</a>
+            <a class="btn primary" href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">💬 SMS</a>
+            <a class="btn ghost" href="#book">📅 Book Now</a>
           </div>
           <div class="hr"></div>
-          <div class="small" id="t_hint">
-            Tip: Click a price row to auto-fill the booking form.
-          </div>
+          <div class="small">Tip: Click “Book this” from the price table to auto-fill the booking form.</div>
         </div>
 
         <div class="card">
-          <h2 style="margin:0 0 8px" id="t_quick">Quick Booking</h2>
-          <div class="notice" id="t_notice">
-            After you submit, the booking details will be sent to your phone SMS AND to Tawk live chat (as a message), so you can reply to customers.
+          <h2 style="margin:0 0 8px">Quick Booking</h2>
+          <div class="notice">
+            After you submit, the booking details will open as an SMS AND will also be sent to your Tawk live chat dashboard as a message.
           </div>
           <div class="row" style="margin-top:12px">
-            <button class="btn primary" type="button" onclick="scrollToId('prices')" id="t_go_prices">View Prices</button>
-            <button class="btn ghost" type="button" onclick="scrollToId('book')" id="t_go_book">Go to Form</button>
+            <button class="btn primary" type="button" onclick="scrollToId('prices')">View Prices</button>
+            <button class="btn ghost" type="button" onclick="scrollToId('book')">Go to Form</button>
           </div>
         </div>
       </div>
@@ -167,50 +160,50 @@
 
     <!-- Prices -->
     <div class="section" id="prices">
-      <h2 id="t_prices_title">Prices</h2>
-      <div class="muted" id="t_prices_sub">Select a service and size. Click “Book this price” to auto-fill the booking form.</div>
+      <h2>Prices</h2>
+      <div class="muted">Click “Book this” to auto-fill the booking form.</div>
 
       <div class="grid2" style="margin-top:12px">
         <div class="card">
-          <h2 style="margin-top:0" id="t_bath">Bath & Brush</h2>
-          <div class="small" id="t_bath_note">Dogs by weight and coat length • Cats available</div>
+          <h2 style="margin-top:0">Bath & Brush</h2>
+          <div class="small">Dogs by weight and coat length • Cats available</div>
           <div style="margin-top:10px;overflow:auto">
             <table>
               <thead>
                 <tr>
-                  <th id="t_col_weight">Weight</th>
+                  <th>Weight</th>
                   <th>&lt; 1/2 inch</th>
                   <th>&lt; 1/2 inch+</th>
                   <th>1 inch+</th>
-                  <th id="t_col_action">Action</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody id="bathTable"></tbody>
             </table>
           </div>
-          <p class="small" id="t_bath_includes" style="margin-top:10px">
+          <p class="small" style="margin-top:10px">
             Includes: nails, paw hair, conditioning, ears, and anal glands.
           </p>
         </div>
 
         <div class="card">
-          <h2 style="margin-top:0" id="t_full">Full Grooming</h2>
-          <div class="small" id="t_full_note">Dogs by weight and coat length • Cats available</div>
+          <h2 style="margin-top:0">Full Grooming</h2>
+          <div class="small">Dogs by weight and coat length • Cats available</div>
           <div style="margin-top:10px;overflow:auto">
             <table>
               <thead>
                 <tr>
-                  <th id="t_col_weight2">Weight</th>
+                  <th>Weight</th>
                   <th>&lt; 1/2 inch</th>
                   <th>&lt; 1/2 inch+</th>
                   <th>1 inch+</th>
-                  <th id="t_col_action2">Action</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody id="fullTable"></tbody>
             </table>
           </div>
-          <p class="small" id="t_full_includes" style="margin-top:10px">
+          <p class="small" style="margin-top:10px">
             Includes: hair trimming, brushing, nail trimming, paw hair removal, conditioning, facial cleaning, ear cleaning, and anal gland cleaning.
           </p>
         </div>
@@ -219,33 +212,31 @@
 
     <!-- Booking -->
     <div class="section" id="book">
-      <h2 id="t_book_title">Book Now</h2>
-      <div class="muted" id="t_book_sub">
-        Fill in the form. Price will auto-fill when you select a row from Prices.
-      </div>
+      <h2>Book Now</h2>
+      <div class="muted">Fill in the form. Price auto-fills when you select a “Book this” from Prices.</div>
 
       <div class="card" style="margin-top:12px">
         <div class="form-row">
           <div>
-            <label id="t_name">Your Name</label>
+            <label>Your Name</label>
             <input id="name" placeholder="Name" />
           </div>
           <div>
-            <label id="t_phone">Your Phone</label>
+            <label>Your Phone</label>
             <input id="phone" placeholder="(xxx) xxx-xxxx" />
           </div>
         </div>
 
         <div class="form-row">
           <div>
-            <label id="t_pet">Pet Type</label>
+            <label>Pet Type</label>
             <select id="pet">
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
             </select>
           </div>
           <div>
-            <label id="t_service">Service</label>
+            <label>Service</label>
             <select id="service">
               <option value="Bath & Brush">Bath & Brush</option>
               <option value="Full Grooming">Full Grooming</option>
@@ -255,11 +246,11 @@
 
         <div class="form-row">
           <div>
-            <label id="t_weight">Weight / Size</label>
+            <label>Weight / Size</label>
             <input id="weight" placeholder="e.g., 16-35 lbs" />
           </div>
           <div>
-            <label id="t_coat">Coat Length</label>
+            <label>Coat Length</label>
             <select id="coat">
               <option value="< 1/2 inch">&lt; 1/2 inch</option>
               <option value="< 1/2 inch+">&lt; 1/2 inch+</option>
@@ -270,64 +261,69 @@
 
         <div class="form-row">
           <div>
-            <label id="t_price">Price</label>
+            <label>Price</label>
             <input id="price" placeholder="$0" />
           </div>
           <div>
-            <label id="t_date">Preferred Date</label>
+            <label>Preferred Date</label>
             <input id="date" type="date" />
           </div>
         </div>
 
         <div class="form-row">
           <div>
-            <label id="t_time">Preferred Time</label>
+            <label>Preferred Time</label>
             <input id="time" type="time" />
           </div>
           <div>
-            <label id="t_notes">Notes</label>
+            <label>Notes</label>
             <textarea id="note" placeholder="Breed, temperament, special requests..."></textarea>
           </div>
         </div>
 
         <div class="row">
-          <button class="btn primary" type="button" onclick="sendBooking()" id="t_submit">Submit Booking</button>
-          <button class="btn ghost" type="button" onclick="clearForm()" id="t_clear">Clear</button>
-          <a class="btn warn" href="sms:+16197540193" id="t_sms_manual">Send SMS Manually</a>
+          <button class="btn primary" type="button" onclick="sendBooking()">Submit Booking</button>
+          <button class="btn ghost" type="button" onclick="clearForm()">Clear</button>
+          <a class="btn warn" href="sms:+16197540193">Send SMS Manually</a>
         </div>
 
-        <div class="small" style="margin-top:10px" id="t_submit_hint">
-          Submitting will: (1) open SMS with booking details, and (2) send the same details to Tawk live chat as a message.
+        <div class="small" style="margin-top:10px">
+          Submitting will: (1) open an SMS with booking details, and (2) send the same details to Tawk live chat as a message.
         </div>
       </div>
     </div>
 
     <!-- Location -->
     <div class="section" id="location">
-      <h2 id="t_loc_title">Location</h2>
-      <div class="muted" id="t_loc_sub">Find us on Google Maps.</div>
+      <h2>Location</h2>
+      <div class="muted">Find us on Google Maps.</div>
       <div class="map-wrap" style="margin-top:12px">
-        <!-- If you want exact pin, you can replace this embed later -->
         <iframe
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q=1680%20E%20Broadway%20Suite%20E,%20Chula%20Vista,%20CA&output=embed">
         </iframe>
       </div>
+      <div class="row" style="margin-top:12px">
+        <a class="btn ghost" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=1680%20E%20Broadway%20Suite%20E,%20Chula%20Vista,%20CA">
+          🧭 Open in Google Maps
+        </a>
+      </div>
     </div>
 
     <!-- Contact -->
     <div class="section" id="contact">
-      <h2 id="t_contact_title">Contact</h2>
+      <h2>Contact</h2>
       <div class="card">
-        <div class="sub" id="t_contact_text">
+        <div class="sub">
           Phone: <b>(619) 754-0193</b><br/>
           Address: <b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>
           Live chat: bottom-right chat widget
         </div>
         <div class="row">
-          <a class="btn success" href="tel:+16197540193" id="t_call2">📞 Call</a>
-          <a class="btn primary" href="sms:+16197540193" id="t_sms2">💬 SMS</a>
+          <a class="btn success" href="tel:+16197540193">📞 Call</a>
+          <a class="btn primary" href="sms:+16197540193">💬 SMS</a>
           <a class="btn ghost" href="https://jjie168.github.io/pet-grooming-site/" target="_blank" rel="noopener">🌐 Open Site</a>
         </div>
       </div>
@@ -337,12 +333,12 @@
 
   <!-- Floating buttons -->
   <div class="fab">
-    <a class="call" href="tel:+16197540193">📞 <span id="t_fab_call">Call</span></a>
-    <a class="sms" href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">💬 <span id="t_fab_sms">SMS</span></a>
+    <a class="call" href="tel:+16197540193">📞 Call</a>
+    <a class="sms" href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">💬 SMS</a>
   </div>
 
   <script>
-    // ====== DATA (from your price sheet photo) ======
+    // ====== PRICE DATA ======
     const bathBrush = [
       { weight:"1-15 lbs",  p1:50,  p2:55,  p3:60 },
       { weight:"16-35 lbs", p1:55,  p2:60,  p3:70 },
@@ -360,12 +356,6 @@
       { weight:"76-100 lbs",p1:135, p2:155, p3:190 }
     ];
     const fullCats = { p1:100, p2:120, p3:150 };
-
-    const coatKeys = [
-      { label:"< 1/2 inch", key:"p1" },
-      { label:"< 1/2 inch+", key:"p2" },
-      { label:"1 inch+", key:"p3" }
-    ];
 
     function money(v){ return (typeof v === "number") ? `$${v}` : v; }
 
@@ -391,7 +381,6 @@
         tbody.appendChild(tr);
       });
 
-      // Cats row
       const trc = document.createElement("tr");
       trc.innerHTML = `
         <td><b>Cats</b></td>
@@ -442,7 +431,7 @@
       const time  = document.getElementById("time").value || "";
       const note  = (document.getElementById("note").value || "").trim();
 
-      const lines = [
+      return [
         "Pet Grooming Booking",
         `Name: ${name || "N/A"}`,
         `Phone: ${phone || "N/A"}`,
@@ -454,29 +443,17 @@
         `Date: ${date || "N/A"}`,
         `Time: ${time || "N/A"}`,
         `Notes: ${note || "N/A"}`
-      ];
-      return lines.join("\n");
+      ].join("\n");
     }
 
     function sendToTawk(message){
-      // Wait until Tawk is ready
       try{
-        if (window.Tawk_API && typeof window.Tawk_API.addEvent === "function") {
-          // Some accounts support addEvent
-          window.Tawk_API.addEvent("booking_submitted", { message });
-        }
-        // Always try to send chat message to operator panel:
-        if (window.Tawk_API && typeof window.Tawk_API.maximize === "function") {
-          // Do not force maximize; leave it
-        }
         if (window.Tawk_API && typeof window.Tawk_API.setAttributes === "function") {
-          // Optional: attach visitor info
-          window.Tawk_API.setAttributes({ name: document.getElementById("name").value || "Booking", phone: document.getElementById("phone").value || "" }, function(){});
+          window.Tawk_API.setAttributes(
+            { name: document.getElementById("name").value || "Booking", phone: document.getElementById("phone").value || "" },
+            function(){}
+          );
         }
-        if (window.Tawk_API && typeof window.Tawk_API.toggle === "function") {
-          // no-op
-        }
-        // Best method: sendMessage (available on many Tawk widgets)
         if (window.Tawk_API && typeof window.Tawk_API.sendMessage === "function") {
           window.Tawk_API.sendMessage(message);
           return true;
@@ -488,10 +465,8 @@
     function sendBooking(){
       const msg = buildBookingMessage();
 
-      // 1) send to Tawk (as message)
+      // 1) send to Tawk
       let sent = sendToTawk(msg);
-
-      // If Tawk not ready yet, retry shortly
       if(!sent){
         let tries = 0;
         const timer = setInterval(()=>{
@@ -500,143 +475,15 @@
         }, 700);
       }
 
-      // 2) open SMS with message to business phone
+      // 2) open SMS
       const smsBody = encodeURIComponent(msg);
       window.location.href = `sms:+16197540193?&body=${smsBody}`;
     }
-
-    // ====== Language toggle ======
-    const i18n = {
-      en: {
-        t_brand:"Red Dolphin Pet Grooming",
-        t_pill:"Live chat • SMS booking • Prices",
-        t_title:"Professional Pet Grooming Services",
-        t_sub:"Address: <b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>Phone: <b>(619) 754-0193</b>",
-        t_call_btn:"📞 Call",
-        t_sms_btn:"💬 SMS",
-        t_book_btn:"📅 Book Now",
-        t_hint:"Tip: Click a price row to auto-fill the booking form.",
-        t_quick:"Quick Booking",
-        t_notice:"After you submit, the booking details will be sent to your phone SMS AND to Tawk live chat (as a message), so you can reply to customers.",
-        t_go_prices:"View Prices",
-        t_go_book:"Go to Form",
-        t_prices_title:"Prices",
-        t_prices_sub:"Select a service and size. Click “Book this price” to auto-fill the booking form.",
-        t_bath:"Bath & Brush",
-        t_bath_note:"Dogs by weight and coat length • Cats available",
-        t_bath_includes:"Includes: nails, paw hair, conditioning, ears, and anal glands.",
-        t_full:"Full Grooming",
-        t_full_note:"Dogs by weight and coat length • Cats available",
-        t_full_includes:"Includes: hair trimming, brushing, nail trimming, paw hair removal, conditioning, facial cleaning, ear cleaning, and anal gland cleaning.",
-        t_col_weight:"Weight",
-        t_col_action:"Action",
-        t_col_weight2:"Weight",
-        t_col_action2:"Action",
-        t_book_title:"Book Now",
-        t_book_sub:"Fill in the form. Price will auto-fill when you select a row from Prices.",
-        t_name:"Your Name",
-        t_phone:"Your Phone",
-        t_pet:"Pet Type",
-        t_service:"Service",
-        t_weight:"Weight / Size",
-        t_coat:"Coat Length",
-        t_price:"Price",
-        t_date:"Preferred Date",
-        t_time:"Preferred Time",
-        t_notes:"Notes",
-        t_submit:"Submit Booking",
-        t_clear:"Clear",
-        t_sms_manual:"Send SMS Manually",
-        t_submit_hint:"Submitting will: (1) open SMS with booking details, and (2) send the same details to Tawk live chat as a message.",
-        t_loc_title:"Location",
-        t_loc_sub:"Find us on Google Maps.",
-        t_contact_title:"Contact",
-        t_contact_text:"Phone: <b>(619) 754-0193</b><br/>Address: <b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>Live chat: bottom-right chat widget",
-        t_nav_prices:"Prices",
-        t_nav_book:"Book Now",
-        t_nav_location:"Location",
-        t_nav_contact:"Contact",
-        t_fab_call:"Call",
-        t_fab_sms:"SMS"
-      },
-      zh: {
-        t_brand:"红海豚宠物美容",
-        t_pill:"在线聊天 • 短信预约 • 价格表",
-        t_title:"专业宠物美容服务",
-        t_sub:"地址：<b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>电话：<b>(619) 754-0193</b>",
-        t_call_btn:"📞 拨打电话",
-        t_sms_btn:"💬 发送短信",
-        t_book_btn:"📅 立即预约",
-        t_hint:"提示：在价格表点击“Book this”，会自动带入预约表单。",
-        t_quick:"快速开始",
-        t_notice:"提交后：会自动打开短信（包含预约信息）并把相同内容发到 Tawk 在线客服后台（作为一条消息），方便你回复客户。",
-        t_go_prices:"查看价格",
-        t_go_book:"去填写表单",
-        t_prices_title:"价格表",
-        t_prices_sub:"选择服务与体型，点击 “Book this” 自动带入预约表单。",
-        t_bath:"洗澡 & 梳毛（Bath & Brush）",
-        t_bath_note:"狗：按体重和毛长 • 猫：有单独价格",
-        t_bath_includes:"包含：指甲、脚底毛、护毛素、耳部清洁、肛门腺清洁。",
-        t_full:"全套美容（Full Grooming）",
-        t_full_note:"狗：按体重和毛长 • 猫：有单独价格",
-        t_full_includes:"包含：修剪、梳毛、剪指甲、脚底毛清理、护毛、脸部清洁、耳部清洁、肛门腺清洁。",
-        t_col_weight:"体重",
-        t_col_action:"操作",
-        t_col_weight2:"体重",
-        t_col_action2:"操作",
-        t_book_title:"预约表单",
-        t_book_sub:"填写信息。你从价格表选择后，价格会自动带入。",
-        t_name:"姓名",
-        t_phone:"电话",
-        t_pet:"宠物类型",
-        t_service:"服务项目",
-        t_weight:"体重/体型",
-        t_coat:"毛长",
-        t_price:"价格",
-        t_date:"期望日期",
-        t_time:"期望时间",
-        t_notes:"备注",
-        t_submit:"提交预约",
-        t_clear:"清空",
-        t_sms_manual:"手动发短信",
-        t_submit_hint:"提交后将：① 打开短信（带预约内容）② 同步把预约内容发到 Tawk 在线客服后台（消息）。",
-        t_loc_title:"位置",
-        t_loc_sub:"Google 地图导航。",
-        t_contact_title:"联系方式",
-        t_contact_text:"电话：<b>(619) 754-0193</b><br/>地址：<b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>在线客服：右下角聊天窗口",
-        t_nav_prices:"价格",
-        t_nav_book:"预约",
-        t_nav_location:"地图",
-        t_nav_contact:"联系",
-        t_fab_call:"电话",
-        t_fab_sms:"短信"
-      }
-    };
-
-    let lang = "en";
-    function setLang(next){
-      lang = next;
-      const dict = i18n[lang];
-      Object.keys(dict).forEach(id=>{
-        const el = document.getElementById(id);
-        if(!el) return;
-        // some fields are HTML (with <br/>)
-        if (id === "t_sub" || id === "t_contact_text") el.innerHTML = dict[id];
-        else el.textContent = dict[id];
-      });
-      // Also update html lang
-      document.documentElement.lang = (lang === "zh") ? "zh" : "en";
-    }
-
-    document.getElementById("langBtn").addEventListener("click", ()=>{
-      setLang(lang === "en" ? "zh" : "en");
-    });
 
     // Init
     document.getElementById("year").textContent = new Date().getFullYear();
     renderTable("bathTable", bathBrush, "Bath & Brush", bathCats);
     renderTable("fullTable", fullGroom, "Full Grooming", fullCats);
-    setLang("en"); // default English
   </script>
 
   <!-- ===== Tawk.to Live Chat (your widget) ===== -->
@@ -644,12 +491,12 @@
   <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/698917279842801c33e38579/1jgvo4shb';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/698917279842801c33e38579/1jgvo4shb';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
   })();
   </script>
   <!--End of Tawk.to Script-->
