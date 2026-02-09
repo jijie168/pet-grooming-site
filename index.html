@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Red Dolphin Pet Grooming</title>
-  <meta name="description" content="Pet grooming services with pricing, booking, live chat, SMS and maps." />
+  <meta name="description" content="Pet grooming services with booking, live chat, SMS and maps." />
 
   <style>
     :root{
@@ -13,19 +13,17 @@
       --text:#e9eefc;
       --muted:#a8b3d6;
       --line:rgba(255,255,255,.12);
-      --blue:#2b6cff;
-      --green:#22c55e;
+      --btn:#2b6cff;
+      --btn2:#22c55e;
+      --warn:#f59e0b;
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius: 16px;
       --max: 1080px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b1220,#070b14);color:var(--text);
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b1220,#070b14);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif}
     a{color:inherit}
     .wrap{max-width:var(--max);margin:0 auto;padding:24px}
-
-    /* Top Nav */
     .nav{
       position:sticky;top:0;z-index:20;
       backdrop-filter: blur(10px);
@@ -34,12 +32,11 @@
     }
     .nav-inner{max-width:var(--max);margin:0 auto;padding:12px 24px;display:flex;gap:14px;align-items:center;justify-content:space-between}
     .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.2px}
-    .dot{width:10px;height:10px;border-radius:99px;background:var(--green);box-shadow:0 0 0 6px rgba(34,197,94,.12)}
-    .menu{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .dot{width:10px;height:10px;border-radius:99px;background:var(--btn2);box-shadow:0 0 0 6px rgba(34,197,94,.12)}
+    .menu{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
     .menu a{padding:8px 10px;border-radius:10px;color:var(--muted);text-decoration:none;border:1px solid transparent}
     .menu a:hover{color:var(--text);border-color:var(--line);background:rgba(255,255,255,.04)}
 
-    /* Cards */
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
       border:1px solid var(--line);
@@ -48,58 +45,76 @@
       padding:18px;
     }
     h1{margin:0 0 10px;font-size:34px;line-height:1.1}
-    h2{margin:0 0 10px;font-size:22px}
-    .sub{color:var(--muted);line-height:1.5}
-    .section{padding:14px 0}
-    .hero{padding:22px 0 12px}
-    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
-    @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
-
-    /* Buttons */
-    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .sub{color:var(--muted);line-height:1.6}
+    .pill{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:8px 10px;border-radius:999px;background:rgba(43,108,255,.12);
+      border:1px solid rgba(43,108,255,.25);color:#cfe0ff;font-size:13px
+    }
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
       padding:10px 12px;border-radius:12px;border:1px solid transparent;
       text-decoration:none;font-weight:700;cursor:pointer
     }
-    .btn.blue{background:var(--blue);border-color:rgba(43,108,255,.5)}
-    .btn.green{background:var(--green);border-color:rgba(34,197,94,.5);color:#05210f}
+    .btn.primary{background:var(--btn);border-color:rgba(43,108,255,.5)}
+    .btn.success{background:var(--btn2);border-color:rgba(34,197,94,.5);color:#05210f}
     .btn.ghost{background:rgba(255,255,255,.04);border-color:var(--line);color:var(--text)}
+    .btn.warn{background:rgba(245,158,11,.16);border-color:rgba(245,158,11,.35)}
+    .section{padding:14px 0}
+    .section h2{margin:0 0 10px;font-size:24px}
+    .muted{color:var(--muted)}
     .small{font-size:12px;color:var(--muted)}
+    .hr{height:1px;background:var(--line);margin:14px 0}
 
-    /* Price table - optimized */
-    .table-wrap{overflow:auto;border-radius:14px;border:1px solid var(--line)}
-    table{width:100%;border-collapse:collapse;min-width:760px;background:rgba(0,0,0,.12)}
-    th,td{padding:10px 10px;border-bottom:1px solid var(--line);font-size:14px;text-align:left;vertical-align:middle}
-    th{background:rgba(255,255,255,.04);color:#dbe4ff;position:sticky;top:0}
-    tr:last-child td{border-bottom:none}
+    /* ✅ 放大你指定的内容 */
+    .service-title{font-size:30px;font-weight:900;margin:0 0 8px}
+    .service-sub{font-size:18px;color:#dbe4ff;opacity:.95;margin:0 0 10px;line-height:1.5}
+    .service-includes{font-size:18px;color:var(--text);opacity:.95;margin:0;line-height:1.6}
+    .service-card{padding:22px}
 
-    .price-cell{
-      display:flex;align-items:center;justify-content:space-between;gap:10px;
-    }
-    .price{
-      font-weight:800;
-      white-space:nowrap;
-    }
-    .book-mini{
-      padding:7px 10px;border-radius:10px;border:1px solid var(--line);
-      background:rgba(255,255,255,.04);color:var(--text);cursor:pointer;font-weight:700
-    }
-    .book-mini:hover{border-color:rgba(43,108,255,.6);background:rgba(43,108,255,.12)}
-
-    /* Form */
-    label{display:block;font-size:13px;color:#dbe4ff;margin:8px 0 6px}
+    /* Booking form */
+    label{display:block;font-size:14px;color:#dbe4ff;margin:10px 0 6px}
+    .req{color:#ffb4b4;font-weight:800;margin-left:6px}
     input,select,textarea{
-      width:100%;padding:10px 10px;border-radius:12px;
+      width:100%;padding:12px 12px;border-radius:12px;
       border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--text)
     }
     textarea{min-height:92px;resize:vertical}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media (max-width:700px){.form-row{grid-template-columns:1fr}}
+    @media (max-width:780px){.form-row{grid-template-columns:1fr}}
+    .notice{
+      padding:12px 14px;border-radius:12px;border:1px solid rgba(245,158,11,.35);
+      background:rgba(245,158,11,.12);color:#ffe7b5;font-size:14px;line-height:1.5
+    }
+    .error{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,120,120,.35);
+      background:rgba(255,120,120,.12);
+      color:#ffd4d4;
+      display:none;
+      font-size:14px;
+      line-height:1.5;
+    }
+    .ok{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(34,197,94,.35);
+      background:rgba(34,197,94,.12);
+      color:#d9ffe8;
+      display:none;
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    /* Map */
     .map-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
     iframe{display:block;width:100%;height:340px;border:0}
 
-    /* Floating quick buttons */
+    /* Floating buttons */
     .fab{
       position:fixed;right:16px;bottom:18px;display:flex;flex-direction:column;gap:10px;z-index:50
     }
@@ -109,6 +124,8 @@
       padding:10px 12px;border-radius:999px;text-decoration:none;color:var(--text);
       box-shadow:var(--shadow)
     }
+    .fab .call{border-color:rgba(34,197,94,.35)}
+    .fab .sms{border-color:rgba(43,108,255,.35)}
   </style>
 </head>
 
@@ -120,7 +137,7 @@
         <span>Red Dolphin Pet Grooming</span>
       </div>
       <div class="menu">
-        <a href="#prices">Prices</a>
+        <a href="#services">Services</a>
         <a href="#book">Book Now</a>
         <a href="#location">Location</a>
         <a href="#contact">Contact</a>
@@ -129,164 +146,155 @@
   </div>
 
   <div class="wrap">
-    <div class="hero">
-      <div class="hero-grid">
-        <div class="card">
-          <h1>Professional Pet Grooming Services</h1>
-          <div class="sub">
-            Address: <b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>
-            Phone: <b>(619) 754-0193</b>
-          </div>
-          <div class="row">
-            <a class="btn green" href="tel:+16197540193">📞 Call</a>
-            <a class="btn blue" href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">💬 SMS</a>
-            <a class="btn ghost" href="#book">📅 Book Now</a>
-          </div>
-          <div class="small" style="margin-top:10px">
-            Tip: Click a “Book” button in the price table to auto-fill the booking form.
-          </div>
-        </div>
-
-        <div class="card">
-          <h2 style="margin-top:0">How booking works</h2>
-          <div class="sub">
-            After you submit: <b>(1)</b> it opens SMS with booking details, and <b>(2)</b> sends the same details to <b>Tawk</b> as a chat message for your customer service.
-          </div>
-          <div class="row">
-            <button class="btn blue" type="button" onclick="scrollToId('prices')">View Prices</button>
-            <button class="btn ghost" type="button" onclick="scrollToId('book')">Go to Form</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Prices -->
-    <div class="section" id="prices">
-      <h2>Prices</h2>
-      <div class="sub">Optimized table layout (weight on the left, three coat options, each has its own Book button).</div>
-
-      <div class="card" style="margin-top:12px">
-        <h2>Bath & Brush</h2>
-        <div class="small">Dogs by weight and coat length • Cats available</div>
-        <div class="table-wrap" style="margin-top:10px">
-          <table>
-            <thead>
-              <tr>
-                <th style="width:22%">Weight</th>
-                <th>&lt; 1/2 inch</th>
-                <th>&lt; 1/2 inch+</th>
-                <th>1 inch+</th>
-              </tr>
-            </thead>
-            <tbody id="bathTable"></tbody>
-          </table>
-        </div>
-        <p class="small" style="margin-top:10px">
-          Includes: nails, paw hair, conditioning, ears, and anal glands.
-        </p>
-      </div>
-
+    <div class="section">
       <div class="card">
-        <h2>Full Grooming</h2>
-        <div class="small">Dogs by weight and coat length • Cats available</div>
-        <div class="table-wrap" style="margin-top:10px">
-          <table>
-            <thead>
-              <tr>
-                <th style="width:22%">Weight</th>
-                <th>&lt; 1/2 inch</th>
-                <th>&lt; 1/2 inch+</th>
-                <th>1 inch+</th>
-              </tr>
-            </thead>
-            <tbody id="fullTable"></tbody>
-          </table>
+        <span class="pill">Live chat • SMS booking</span>
+        <h1>Professional Pet Grooming Services</h1>
+        <div class="sub">
+          Address: <b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>
+          Phone: <b>(619) 754-0193</b>
         </div>
-        <p class="small" style="margin-top:10px">
-          Includes: hair trimming, brushing, nail trimming, paw hair removal, conditioning, facial cleaning, ear cleaning, and anal gland cleaning.
-        </p>
+        <div class="row">
+          <a class="btn success" href="tel:+16197540193">📞 Call</a>
+          <a class="btn primary" href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">💬 SMS</a>
+          <a class="btn ghost" href="#book">📅 Book Now</a>
+        </div>
       </div>
     </div>
 
-    <!-- Booking -->
+    <!-- ✅ 放大后的服务说明（去掉价格区） -->
+    <div class="section" id="services">
+      <h2>Services</h2>
+      <div class="muted">Dogs by weight and coat length • Cats available</div>
+
+      <div class="card service-card" style="margin-top:12px">
+        <div class="service-title">Bath & Brush</div>
+        <div class="service-sub">Dogs by weight and coat length • Cats available</div>
+        <div class="service-includes">
+          Includes: nails, paw hair, conditioning, ears, and anal glands.
+        </div>
+      </div>
+
+      <div class="card service-card" style="margin-top:14px">
+        <div class="service-title">Full Grooming</div>
+        <div class="service-sub">Dogs by weight and coat length • Cats available</div>
+        <div class="service-includes">
+          Includes: hair trimming, brushing, nail trimming, paw hair removal, conditioning, facial cleaning,
+          ear cleaning, and anal gland cleaning.
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ 预约表单（必填项 + 前一天确认提醒） -->
     <div class="section" id="book">
       <h2>Book Now</h2>
-      <div class="sub">Pick a price first (Book button), then fill customer details and submit.</div>
+      <div class="notice">
+        Required fields are marked with <b>*</b>. After submit: (1) SMS opens with booking details, (2) the same details will be sent to Tawk (if supported),
+        and (3) a calendar file downloads — your phone can remind you <b>1 day before</b> to confirm.
+      </div>
 
       <div class="card" style="margin-top:12px">
         <div class="form-row">
           <div>
-            <label>Your Name</label>
-            <input id="name" placeholder="Name" />
+            <label>Owner Name <span class="req">*</span></label>
+            <input id="ownerName" placeholder="Owner full name" />
           </div>
           <div>
-            <label>Your Phone</label>
-            <input id="phone" placeholder="(xxx) xxx-xxxx" />
+            <label>Owner Phone <span class="req">*</span></label>
+            <input id="ownerPhone" placeholder="(xxx) xxx-xxxx" />
           </div>
         </div>
 
         <div class="form-row">
           <div>
-            <label>Pet Type</label>
-            <select id="pet">
-              <option value="Dog">Dog</option>
-              <option value="Cat">Cat</option>
+            <label>How many pets? <span class="req">*</span></label>
+            <select id="petCount">
+              <option value="">Select</option>
+              <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+              <option value="4">4</option><option value="5+">5+</option>
             </select>
           </div>
           <div>
-            <label>Service</label>
-            <input id="service" placeholder="Auto-filled from price table" />
+            <label>Pet Type <span class="req">*</span></label>
+            <select id="petType">
+              <option value="">Select</option>
+              <option value="Dog">Dog</option>
+              <option value="Cat">Cat</option>
+              <option value="Mixed">Mixed (Dog & Cat)</option>
+            </select>
           </div>
         </div>
 
         <div class="form-row">
           <div>
-            <label>Weight / Size</label>
-            <input id="weight" placeholder="Auto-filled from price table" />
+            <label>Pet Name(s) <span class="req">*</span></label>
+            <input id="petNames" placeholder="e.g., Coco / Lucky" />
           </div>
           <div>
-            <label>Coat Length</label>
-            <input id="coat" placeholder="Auto-filled from price table" />
+            <label>Vaccinated? <span class="req">*</span></label>
+            <select id="vaccinated">
+              <option value="">Select</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="Not sure">Not sure</option>
+            </select>
           </div>
         </div>
 
         <div class="form-row">
           <div>
-            <label>Price</label>
-            <input id="price" placeholder="$0" />
+            <label>Pet Birthday (approx) <span class="req">*</span></label>
+            <input id="petBirthday" type="date" />
           </div>
           <div>
-            <label>Preferred Date</label>
+            <label>Service <span class="req">*</span></label>
+            <select id="service">
+              <option value="">Select</option>
+              <option value="Bath & Brush">Bath & Brush</option>
+              <option value="Full Grooming">Full Grooming</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label>Preferred Date <span class="req">*</span></label>
             <input id="date" type="date" />
           </div>
+          <div>
+            <label>Preferred Time <span class="req">*</span></label>
+            <input id="time" type="time" />
+          </div>
         </div>
 
         <div class="form-row">
           <div>
-            <label>Preferred Time</label>
-            <input id="time" type="time" />
+            <label>Notes (optional)</label>
+            <textarea id="note" placeholder="Breed, temperament, special requests..."></textarea>
           </div>
           <div>
-            <label>Notes</label>
-            <textarea id="note" placeholder="Breed, temperament, special requests..."></textarea>
+            <label>Confirmation Reminder</label>
+            <div class="sub">
+              We will create a calendar reminder <b>1 day before</b> your appointment.
+              When the reminder pops up, open the calendar event and tap <b>Confirm</b> to send SMS.
+            </div>
           </div>
         </div>
 
         <div class="row">
-          <button class="btn blue" type="button" onclick="sendBooking()">Submit Booking</button>
+          <button class="btn primary" type="button" onclick="submitBooking()">Submit Booking</button>
           <button class="btn ghost" type="button" onclick="clearForm()">Clear</button>
+          <a class="btn warn" href="sms:+16197540193">Send SMS Manually</a>
         </div>
 
-        <div class="small" style="margin-top:10px">
-          Submitting will: (1) open SMS with booking details, and (2) send the same details to Tawk as a chat message.
-        </div>
+        <div id="err" class="error"></div>
+        <div id="ok" class="ok"></div>
       </div>
     </div>
 
-    <!-- Location -->
     <div class="section" id="location">
       <h2>Location</h2>
-      <div class="sub">Find us on Google Maps.</div>
+      <div class="muted">Find us on Google Maps.</div>
       <div class="map-wrap" style="margin-top:12px">
         <iframe
           loading="lazy"
@@ -296,7 +304,6 @@
       </div>
     </div>
 
-    <!-- Contact -->
     <div class="section" id="contact">
       <h2>Contact</h2>
       <div class="card">
@@ -306,90 +313,35 @@
           Live chat: bottom-right chat widget
         </div>
         <div class="row">
-          <a class="btn green" href="tel:+16197540193">📞 Call</a>
-          <a class="btn blue" href="sms:+16197540193">💬 SMS</a>
-          <!-- Open Site (GitHub Pages) -->
-          <a class="btn ghost" id="openSiteBtn" href="https://jjie168.github.io/pet-grooming-site/" target="_blank" rel="noopener">🌐 Open Site</a>
+          <a class="btn success" href="tel:+16197540193">📞 Call</a>
+          <a class="btn primary" href="sms:+16197540193">💬 SMS</a>
+          <!-- ✅ Open Site 已去掉 -->
         </div>
       </div>
       <div class="small" style="margin-top:10px;opacity:.8">© <span id="year"></span> Red Dolphin Pet Grooming</div>
     </div>
   </div>
 
-  <!-- Floating buttons -->
   <div class="fab">
-    <a href="tel:+16197540193">📞 Call</a>
-    <a href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">💬 SMS</a>
+    <a class="call" href="tel:+16197540193">📞 Call</a>
+    <a class="sms" href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">💬 SMS</a>
   </div>
 
   <script>
-    // ===== PRICES =====
-    const bathBrush = [
-      { weight:"1-15 lbs",  p1:50,  p2:55,  p3:60 },
-      { weight:"16-35 lbs", p1:55,  p2:60,  p3:70 },
-      { weight:"36-50 lbs", p1:70,  p2:75,  p3:85 },
-      { weight:"51-75 lbs", p1:80,  p2:85,  p3:90 },
-      { weight:"76-100 lbs",p1:90,  p2:95,  p3:"120+" }
-    ];
-    const bathCats = { p1:85, p2:90, p3:95 };
+    const BUSINESS_PHONE = "+16197540193";
 
-    const fullGroom = [
-      { weight:"1-15 lbs",  p1:70,  p2:75,  p3:85 },
-      { weight:"16-35 lbs", p1:80,  p2:85,  p3:95 },
-      { weight:"36-50 lbs", p1:95,  p2:105, p3:130 },
-      { weight:"51-75 lbs", p1:115, p2:135, p3:160 },
-      { weight:"76-100 lbs",p1:135, p2:155, p3:190 }
-    ];
-    const fullCats = { p1:100, p2:120, p3:150 };
-
-    function money(v){ return (typeof v === "number") ? `$${v}` : `$${v}`; }
-
-    function priceCell(service, pet, weight, coat, price){
-      const safePrice = (typeof price === "number") ? `$${price}` : `$${price}`;
-      return `
-        <div class="price-cell">
-          <span class="price">${safePrice}</span>
-          <button class="book-mini" type="button"
-            onclick="pickPrice('${service}','${pet}','${weight}','${coat}','${safePrice}')">
-            Book
-          </button>
-        </div>
-      `;
-    }
-
-    function renderTable(tbodyId, rows, serviceName, catsRow){
-      const tbody = document.getElementById(tbodyId);
-      tbody.innerHTML = "";
-
-      rows.forEach(r=>{
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td><b>${r.weight}</b></td>
-          <td>${priceCell(serviceName,'Dog',r.weight,'< 1/2 inch',r.p1)}</td>
-          <td>${priceCell(serviceName,'Dog',r.weight,'< 1/2 inch+',r.p2)}</td>
-          <td>${priceCell(serviceName,'Dog',r.weight,'1 inch+',r.p3)}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-
-      // Cats row
-      const trc = document.createElement("tr");
-      trc.innerHTML = `
-        <td><b>Cats</b></td>
-        <td>${priceCell(serviceName,'Cat','Cat','< 1/2 inch',catsRow.p1)}</td>
-        <td>${priceCell(serviceName,'Cat','Cat','< 1/2 inch+',catsRow.p2)}</td>
-        <td>${priceCell(serviceName,'Cat','Cat','1 inch+',catsRow.p3)}</td>
-      `;
-      tbody.appendChild(trc);
-    }
-
-    function pickPrice(service, pet, weight, coat, priceText){
-      document.getElementById("pet").value = pet;
-      document.getElementById("service").value = service;
-      document.getElementById("weight").value = weight;
-      document.getElementById("coat").value = coat;
-      document.getElementById("price").value = priceText;
+    function showError(msg){
+      const el = document.getElementById("err");
+      el.textContent = msg;
+      el.style.display = "block";
+      document.getElementById("ok").style.display = "none";
       scrollToId("book");
+    }
+    function showOk(msg){
+      const el = document.getElementById("ok");
+      el.textContent = msg;
+      el.style.display = "block";
+      document.getElementById("err").style.display = "none";
     }
 
     function scrollToId(id){
@@ -397,46 +349,108 @@
     }
 
     function clearForm(){
-      ["name","phone","service","weight","coat","price","date","time","note"].forEach(id=>document.getElementById(id).value="");
-      document.getElementById("pet").value="Dog";
+      ["ownerName","ownerPhone","petNames","petBirthday","date","time","note"].forEach(id=>document.getElementById(id).value="");
+      document.getElementById("petCount").value="";
+      document.getElementById("petType").value="";
+      document.getElementById("vaccinated").value="";
+      document.getElementById("service").value="";
+      document.getElementById("err").style.display="none";
+      document.getElementById("ok").style.display="none";
     }
 
-    // ===== BOOKING: SMS + Tawk message =====
     function buildBookingMessage(){
-      const name  = (document.getElementById("name").value || "").trim();
-      const phone = (document.getElementById("phone").value || "").trim();
-      const pet   = document.getElementById("pet").value;
-      const svc   = (document.getElementById("service").value || "").trim();
-      const w     = (document.getElementById("weight").value || "").trim();
-      const coat  = (document.getElementById("coat").value || "").trim();
-      const price = (document.getElementById("price").value || "").trim();
-      const date  = document.getElementById("date").value || "";
-      const time  = document.getElementById("time").value || "";
-      const note  = (document.getElementById("note").value || "").trim();
+      const ownerName  = (document.getElementById("ownerName").value || "").trim();
+      const ownerPhone = (document.getElementById("ownerPhone").value || "").trim();
+      const petCount   = document.getElementById("petCount").value;
+      const petType    = document.getElementById("petType").value;
+      const petNames   = (document.getElementById("petNames").value || "").trim();
+      const vaccinated = document.getElementById("vaccinated").value;
+      const petBirthday= document.getElementById("petBirthday").value;
+      const service    = document.getElementById("service").value;
+      const date       = document.getElementById("date").value;
+      const time       = document.getElementById("time").value;
+      const note       = (document.getElementById("note").value || "").trim();
 
       return [
         "Pet Grooming Booking",
-        `Name: ${name || "N/A"}`,
-        `Phone: ${phone || "N/A"}`,
-        `Pet: ${pet}`,
-        `Service: ${svc || "N/A"}`,
-        `Weight/Size: ${w || "N/A"}`,
-        `Coat: ${coat || "N/A"}`,
-        `Price: ${price || "N/A"}`,
-        `Date: ${date || "N/A"}`,
-        `Time: ${time || "N/A"}`,
+        `Owner: ${ownerName}`,
+        `Owner Phone: ${ownerPhone}`,
+        `Pets: ${petCount} (${petType})`,
+        `Pet Name(s): ${petNames}`,
+        `Vaccinated: ${vaccinated}`,
+        `Pet Birthday (approx): ${petBirthday}`,
+        `Service: ${service}`,
+        `Appointment Date: ${date}`,
+        `Appointment Time: ${time}`,
         `Notes: ${note || "N/A"}`
-      ].join("\n");
+      ].join("\\n");
+    }
+
+    function makeConfirmSmsLink(ownerName, date, time, petNames){
+      const body = encodeURIComponent(`CONFIRM - ${ownerName} - ${date} ${time} - ${petNames}`);
+      return `sms:${BUSINESS_PHONE}?&body=${body}`;
+    }
+
+    // ✅ 生成 .ics：包含预约时间 + 前一天提醒（VALARM）
+    function downloadICS(ownerName, service, date, time, petNames){
+      // date: YYYY-MM-DD, time: HH:MM
+      const dtStart = new Date(`${date}T${time}:00`);
+      if (isNaN(dtStart.getTime())) return;
+
+      // 默认时长 1 小时
+      const dtEnd = new Date(dtStart.getTime() + 60*60*1000);
+
+      function pad(n){ return String(n).padStart(2,"0"); }
+      function toICS(dt){
+        // 使用本地时间（不加Z），iOS/Google Calendar可识别
+        return `${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}00`;
+      }
+
+      const confirmLink = makeConfirmSmsLink(ownerName, date, time, petNames);
+      const uid = `${Date.now()}-${Math.random().toString(16).slice(2)}@reddolphin`;
+
+      const description =
+        `Booking for: ${ownerName}\\n` +
+        `Service: ${service}\\n` +
+        `Pet(s): ${petNames}\\n\\n` +
+        `CONFIRM (tap): ${confirmLink}\\n\\n` +
+        `Reminder: Please confirm 1 day before.`;
+
+      const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Red Dolphin Pet Grooming//Booking//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${toICS(new Date())}
+DTSTART:${toICS(dtStart)}
+DTEND:${toICS(dtEnd)}
+SUMMARY:Pet Grooming - ${service}
+DESCRIPTION:${description}
+LOCATION:1680 E Broadway Suite E, Chula Vista, CA
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Confirm tomorrow's appointment. Open event and tap CONFIRM.
+END:VALARM
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([ics], {type: "text/calendar;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `Booking-${date}-${ownerName.replace(/\\s+/g,"_")}.ics`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url), 1500);
     }
 
     function sendToTawk(message){
       try{
-        if (window.Tawk_API && typeof window.Tawk_API.setAttributes === "function") {
-          window.Tawk_API.setAttributes(
-            { name: document.getElementById("name").value || "Booking", phone: document.getElementById("phone").value || "" },
-            function(){}
-          );
-        }
         if (window.Tawk_API && typeof window.Tawk_API.sendMessage === "function") {
           window.Tawk_API.sendMessage(message);
           return true;
@@ -445,32 +459,57 @@
       return false;
     }
 
-    function sendBooking(){
+    function submitBooking(){
+      const ownerName  = (document.getElementById("ownerName").value || "").trim();
+      const ownerPhone = (document.getElementById("ownerPhone").value || "").trim();
+      const petCount   = document.getElementById("petCount").value;
+      const petType    = document.getElementById("petType").value;
+      const petNames   = (document.getElementById("petNames").value || "").trim();
+      const vaccinated = document.getElementById("vaccinated").value;
+      const petBirthday= document.getElementById("petBirthday").value;
+      const service    = document.getElementById("service").value;
+      const date       = document.getElementById("date").value;
+      const time       = document.getElementById("time").value;
+
+      // ✅ 必填校验
+      if(!ownerName) return showError("Owner Name is required.");
+      if(!ownerPhone) return showError("Owner Phone is required.");
+      if(!petCount) return showError("Please select how many pets.");
+      if(!petType) return showError("Please select pet type.");
+      if(!petNames) return showError("Pet Name(s) is required.");
+      if(!vaccinated) return showError("Please select vaccination status.");
+      if(!petBirthday) return showError("Pet Birthday (approx) is required.");
+      if(!service) return showError("Please select a service.");
+      if(!date) return showError("Preferred Date is required.");
+      if(!time) return showError("Preferred Time is required.");
+
       const msg = buildBookingMessage();
 
-      // send to Tawk (retry if not ready)
-      let ok = sendToTawk(msg);
-      if(!ok){
+      // 1) 尝试发到 Tawk（能发就发）
+      let sent = sendToTawk(msg);
+      if(!sent){
         let tries = 0;
         const timer = setInterval(()=>{
           tries++;
-          if(sendToTawk(msg) || tries>=10) clearInterval(timer);
-        }, 600);
+          if(sendToTawk(msg) || tries>=8) clearInterval(timer);
+        }, 700);
       }
 
-      // open SMS
-      window.location.href = `sms:+16197540193?&body=${encodeURIComponent(msg)}`;
+      // 2) 下载日历文件，前一天提醒 + 事件内“点击确认”短信链接
+      downloadICS(ownerName, service, date, time, petNames);
+
+      // 3) 打开短信（发给店里 619）
+      const smsBody = encodeURIComponent(msg);
+      window.location.href = `sms:${BUSINESS_PHONE}?&body=${smsBody}`;
+
+      showOk("Submitted! Please send the SMS to confirm booking. A calendar reminder was downloaded (1 day before).");
     }
 
-    // init
+    // Init
     document.getElementById("year").textContent = new Date().getFullYear();
-    renderTable("bathTable", bathBrush, "Bath & Brush", bathCats);
-    renderTable("fullTable", fullGroom, "Full Grooming", fullCats);
-
-    // If opened locally (file://), Open Site still works; no special handling needed.
   </script>
 
-  <!-- Tawk.to Live Chat -->
+  <!-- Tawk.to -->
   <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
