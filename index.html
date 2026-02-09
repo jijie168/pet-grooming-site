@@ -19,6 +19,11 @@
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius: 16px;
       --max: 1080px;
+
+      --cell: rgba(255,255,255,.03);
+      --cellHover: rgba(255,255,255,.06);
+      --selected: rgba(43,108,255,.18);
+      --selectedLine: rgba(43,108,255,.55);
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b1220,#070b14);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif}
@@ -27,7 +32,7 @@
     .nav{
       position:sticky;top:0;z-index:20;
       backdrop-filter: blur(10px);
-      background:rgba(7,11,20,.6);
+      background:rgba(7,11,20,.65);
       border-bottom:1px solid var(--line);
     }
     .nav-inner{max-width:var(--max);margin:0 auto;padding:12px 24px;display:flex;gap:14px;align-items:center;justify-content:space-between}
@@ -60,23 +65,47 @@
       padding:10px 12px;border-radius:12px;border:1px solid transparent;
       text-decoration:none;font-weight:700;cursor:pointer
     }
-    .btn.primary{background:var(--btn);border-color:rgba(43,108,255,.5)}
+    .btn.primary{background:var(--btn);border-color:rgba(43,108,255,.5);color:var(--text)}
     .btn.success{background:var(--btn2);border-color:rgba(34,197,94,.5);color:#05210f}
     .btn.ghost{background:rgba(255,255,255,.04);border-color:var(--line);color:var(--text)}
-    .btn.warn{background:rgba(245,158,11,.16);border-color:rgba(245,158,11,.35)}
+    .btn.warn{background:rgba(245,158,11,.16);border-color:rgba(245,158,11,.35);color:#ffe7b5}
     .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     @media (max-width:900px){.grid2{grid-template-columns:1fr}}
     .section{padding:14px 0}
     .section h2{margin:0 0 10px;font-size:22px}
     .muted{color:var(--muted)}
-    table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:14px;border:1px solid var(--line)}
-    th,td{padding:10px 10px;border-bottom:1px solid var(--line);font-size:14px}
-    th{background:rgba(255,255,255,.04);text-align:left;color:#dbe4ff}
-    tr:last-child td{border-bottom:none}
-    .price-actions{display:flex;gap:8px;flex-wrap:wrap}
     .small{font-size:12px;color:var(--muted)}
     .hr{height:1px;background:var(--line);margin:14px 0}
 
+    /* ===== Tables (click-to-select) ===== */
+    .table-wrap{margin-top:10px;overflow:auto;border-radius:14px;border:1px solid var(--line)}
+    table{width:100%;border-collapse:separate;border-spacing:0;min-width:680px;background:rgba(0,0,0,.12)}
+    th,td{padding:12px 10px;border-bottom:1px solid var(--line);font-size:14px}
+    th{background:rgba(255,255,255,.04);text-align:left;color:#dbe4ff;position:sticky;top:0}
+    tr:last-child td{border-bottom:none}
+    td.cell{
+      background:var(--cell);
+      cursor:pointer;
+      user-select:none;
+      transition: .12s ease;
+      border-left:1px solid rgba(255,255,255,.06);
+    }
+    td.cell:hover{background:var(--cellHover)}
+    td.cell.selected{
+      background:var(--selected);
+      outline:2px solid var(--selectedLine);
+      outline-offset:-2px;
+    }
+    td.weight{white-space:nowrap}
+    .service-actions{
+      display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px
+    }
+    .chosen{
+      padding:8px 10px;border-radius:12px;border:1px solid rgba(43,108,255,.35);
+      background:rgba(43,108,255,.10);color:#d6e5ff;font-size:13px
+    }
+
+    /* ===== Form ===== */
     label{display:block;font-size:13px;color:#dbe4ff;margin:8px 0 6px}
     input,select,textarea{
       width:100%;padding:10px 10px;border-radius:12px;
@@ -90,12 +119,12 @@
       background:rgba(245,158,11,.12);color:#ffe7b5;font-size:13px
     }
 
+    /* ===== Map ===== */
     .map-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
     iframe{display:block;width:100%;height:340px;border:0}
 
-    .fab{
-      position:fixed;right:16px;bottom:18px;display:flex;flex-direction:column;gap:10px;z-index:50
-    }
+    /* ===== Floating buttons ===== */
+    .fab{position:fixed;right:16px;bottom:18px;display:flex;flex-direction:column;gap:10px;z-index:50}
     .fab a{
       display:inline-flex;align-items:center;gap:10px;
       background:rgba(18,26,43,.92);border:1px solid var(--line);
@@ -104,6 +133,16 @@
     }
     .fab .call{border-color:rgba(34,197,94,.35)}
     .fab .sms{border-color:rgba(43,108,255,.35)}
+
+    /* ===== Mobile polish ===== */
+    @media (max-width:700px){
+      h1{font-size:28px}
+      .menu{gap:8px}
+      .menu a{padding:7px 9px}
+      .table-wrap{border-radius:12px}
+      th,td{padding:11px 10px}
+      .chosen{font-size:12px}
+    }
   </style>
 </head>
 
@@ -139,19 +178,21 @@
           <div class="row">
             <a class="btn success" href="tel:+16197540193">📞 Call</a>
             <a class="btn primary" href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">💬 SMS</a>
-            <a class="btn ghost" href="#book">📅 Book Now</a>
+            <a class="btn ghost" href="#prices">💲 View Prices</a>
           </div>
           <div class="hr"></div>
-          <div class="small">Tip: Click “Book this” from the price table to auto-fill the booking form.</div>
+          <div class="small">
+            Tip: Tap a price cell to select it (it will highlight), then click the service “Book” button.
+          </div>
         </div>
 
         <div class="card">
           <h2 style="margin:0 0 8px">Quick Booking</h2>
           <div class="notice">
-            After you submit, the booking details will open as an SMS AND will also be sent to your Tawk live chat dashboard as a message.
+            Submitting will: (1) open SMS with booking details, and (2) send the same details to Tawk live chat as a message.
           </div>
           <div class="row" style="margin-top:12px">
-            <button class="btn primary" type="button" onclick="scrollToId('prices')">View Prices</button>
+            <button class="btn primary" type="button" onclick="scrollToId('prices')">Select Price</button>
             <button class="btn ghost" type="button" onclick="scrollToId('book')">Go to Form</button>
           </div>
         </div>
@@ -161,13 +202,17 @@
     <!-- Prices -->
     <div class="section" id="prices">
       <h2>Prices</h2>
-      <div class="muted">Click “Book this” to auto-fill the booking form.</div>
+      <div class="muted">
+        ① Tap a price cell to select it (highlight) → ② Click “Book Bath & Brush” or “Book Full Grooming” → ③ Fill the form below.
+      </div>
 
       <div class="grid2" style="margin-top:12px">
+        <!-- Bath -->
         <div class="card">
           <h2 style="margin-top:0">Bath & Brush</h2>
           <div class="small">Dogs by weight and coat length • Cats available</div>
-          <div style="margin-top:10px;overflow:auto">
+
+          <div class="table-wrap" aria-label="Bath and Brush price table">
             <table>
               <thead>
                 <tr>
@@ -175,21 +220,28 @@
                   <th>&lt; 1/2 inch</th>
                   <th>&lt; 1/2 inch+</th>
                   <th>1 inch+</th>
-                  <th>Action</th>
                 </tr>
               </thead>
               <tbody id="bathTable"></tbody>
             </table>
           </div>
+
+          <div class="service-actions">
+            <button class="btn primary" type="button" onclick="bookSelected('Bath & Brush')">Book Bath & Brush</button>
+            <div class="chosen" id="bathChosen">No price selected yet.</div>
+          </div>
+
           <p class="small" style="margin-top:10px">
             Includes: nails, paw hair, conditioning, ears, and anal glands.
           </p>
         </div>
 
+        <!-- Full -->
         <div class="card">
           <h2 style="margin-top:0">Full Grooming</h2>
           <div class="small">Dogs by weight and coat length • Cats available</div>
-          <div style="margin-top:10px;overflow:auto">
+
+          <div class="table-wrap" aria-label="Full Grooming price table">
             <table>
               <thead>
                 <tr>
@@ -197,12 +249,17 @@
                   <th>&lt; 1/2 inch</th>
                   <th>&lt; 1/2 inch+</th>
                   <th>1 inch+</th>
-                  <th>Action</th>
                 </tr>
               </thead>
               <tbody id="fullTable"></tbody>
             </table>
           </div>
+
+          <div class="service-actions">
+            <button class="btn primary" type="button" onclick="bookSelected('Full Grooming')">Book Full Grooming</button>
+            <div class="chosen" id="fullChosen">No price selected yet.</div>
+          </div>
+
           <p class="small" style="margin-top:10px">
             Includes: hair trimming, brushing, nail trimming, paw hair removal, conditioning, facial cleaning, ear cleaning, and anal gland cleaning.
           </p>
@@ -210,10 +267,12 @@
       </div>
     </div>
 
-    <!-- Booking -->
+    <!-- Booking (placed right after prices) -->
     <div class="section" id="book">
       <h2>Book Now</h2>
-      <div class="muted">Fill in the form. Price auto-fills when you select a “Book this” from Prices.</div>
+      <div class="muted">
+        Your selected price will fill automatically. Final price may vary based on pet condition.
+      </div>
 
       <div class="card" style="margin-top:12px">
         <div class="form-row">
@@ -262,7 +321,7 @@
         <div class="form-row">
           <div>
             <label>Price</label>
-            <input id="price" placeholder="$0" />
+            <input id="price" placeholder="$0" readonly />
           </div>
           <div>
             <label>Preferred Date</label>
@@ -287,8 +346,8 @@
           <a class="btn warn" href="sms:+16197540193">Send SMS Manually</a>
         </div>
 
-        <div class="small" style="margin-top:10px">
-          Submitting will: (1) open an SMS with booking details, and (2) send the same details to Tawk live chat as a message.
+        <div class="small" style="margin-top:10px;opacity:.9">
+          Submitting will: (1) open SMS with booking details, and (2) send the same details to Tawk live chat as a message.
         </div>
       </div>
     </div>
@@ -303,12 +362,6 @@
           referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q=1680%20E%20Broadway%20Suite%20E,%20Chula%20Vista,%20CA&output=embed">
         </iframe>
-      </div>
-      <div class="row" style="margin-top:12px">
-        <a class="btn ghost" target="_blank" rel="noopener"
-           href="https://www.google.com/maps/search/?api=1&query=1680%20E%20Broadway%20Suite%20E,%20Chula%20Vista,%20CA">
-          🧭 Open in Google Maps
-        </a>
       </div>
     </div>
 
@@ -338,7 +391,7 @@
   </div>
 
   <script>
-    // ====== PRICE DATA ======
+    // ====== DATA (from your price sheet photo) ======
     const bathBrush = [
       { weight:"1-15 lbs",  p1:50,  p2:55,  p3:60 },
       { weight:"16-35 lbs", p1:55,  p2:60,  p3:70 },
@@ -358,57 +411,86 @@
     const fullCats = { p1:100, p2:120, p3:150 };
 
     function money(v){ return (typeof v === "number") ? `$${v}` : v; }
+    function scrollToId(id){ document.getElementById(id).scrollIntoView({behavior:"smooth", block:"start"}); }
+
+    // Track selection per service
+    const selected = {
+      "Bath & Brush": null,
+      "Full Grooming": null
+    };
+
+    function setChosenLabel(service){
+      const el = (service === "Bath & Brush") ? document.getElementById("bathChosen") : document.getElementById("fullChosen");
+      const s = selected[service];
+      if(!s){
+        el.textContent = "No price selected yet.";
+        return;
+      }
+      el.textContent = `${s.pet} • ${s.weight} • ${s.coat} • ${money(s.price)}`;
+    }
+
+    function clearSelectedCells(tableId){
+      const tbody = document.getElementById(tableId);
+      tbody.querySelectorAll("td.cell.selected").forEach(td => td.classList.remove("selected"));
+    }
+
+    function selectCell(service, tableId, td, pick){
+      // clear only that table's selected cells
+      clearSelectedCells(tableId);
+      td.classList.add("selected");
+      selected[service] = pick;
+      setChosenLabel(service);
+    }
 
     function renderTable(tbodyId, rows, serviceName, catsRow){
       const tbody = document.getElementById(tbodyId);
       tbody.innerHTML = "";
 
-      rows.forEach(r=>{
+      function addRow(pet, weight, p1, p2, p3, isCat=false){
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td>${r.weight}</td>
-          <td>${money(r.p1)}</td>
-          <td>${money(r.p2)}</td>
-          <td>${money(r.p3)}</td>
-          <td>
-            <div class="price-actions">
-              <button class="btn ghost" type="button" onclick="pickPrice('${serviceName}','${r.weight}','< 1/2 inch',${r.p1})">Book this</button>
-              <button class="btn ghost" type="button" onclick="pickPrice('${serviceName}','${r.weight}','< 1/2 inch+',${r.p2})">Book this</button>
-              <button class="btn ghost" type="button" onclick="pickPrice('${serviceName}','${r.weight}','1 inch+',${r.p3})">Book this</button>
-            </div>
-          </td>
+          <td class="weight"><b>${isCat ? "Cats" : weight}</b></td>
+          <td class="cell">${money(p1)}</td>
+          <td class="cell">${money(p2)}</td>
+          <td class="cell">${money(p3)}</td>
         `;
+        const tds = tr.querySelectorAll("td.cell");
+        const coats = ["< 1/2 inch","< 1/2 inch+","1 inch+"];
+
+        tds.forEach((td, idx)=>{
+          td.addEventListener("click", ()=>{
+            selectCell(serviceName, tbodyId, td, {
+              pet: isCat ? "Cat" : "Dog",
+              weight: isCat ? "Cat" : weight,
+              coat: coats[idx],
+              price: [p1,p2,p3][idx]
+            });
+          });
+        });
+
         tbody.appendChild(tr);
-      });
+      }
 
-      const trc = document.createElement("tr");
-      trc.innerHTML = `
-        <td><b>Cats</b></td>
-        <td>${money(catsRow.p1)}</td>
-        <td>${money(catsRow.p2)}</td>
-        <td>${money(catsRow.p3)}</td>
-        <td>
-          <div class="price-actions">
-            <button class="btn ghost" type="button" onclick="pickPrice('${serviceName}','Cat','< 1/2 inch',${catsRow.p1}, true)">Book this</button>
-            <button class="btn ghost" type="button" onclick="pickPrice('${serviceName}','Cat','< 1/2 inch+',${catsRow.p2}, true)">Book this</button>
-            <button class="btn ghost" type="button" onclick="pickPrice('${serviceName}','Cat','1 inch+',${catsRow.p3}, true)">Book this</button>
-          </div>
-        </td>
-      `;
-      tbody.appendChild(trc);
+      rows.forEach(r => addRow("Dog", r.weight, r.p1, r.p2, r.p3, false));
+      addRow("Cat", "Cat", catsRow.p1, catsRow.p2, catsRow.p3, true);
+
+      // default label
+      setChosenLabel(serviceName);
     }
 
-    function pickPrice(service, weight, coat, price, isCat=false){
+    function bookSelected(service){
+      const s = selected[service];
+      if(!s){
+        alert("Please tap a price cell first to select a price.");
+        return;
+      }
+      // fill form
       document.getElementById("service").value = service;
-      document.getElementById("weight").value = weight;
-      document.getElementById("coat").value = coat;
-      document.getElementById("price").value = money(price);
-      document.getElementById("pet").value = isCat ? "Cat" : "Dog";
+      document.getElementById("pet").value = s.pet;
+      document.getElementById("weight").value = s.weight;
+      document.getElementById("coat").value = s.coat;
+      document.getElementById("price").value = money(s.price);
       scrollToId("book");
-    }
-
-    function scrollToId(id){
-      document.getElementById(id).scrollIntoView({behavior:"smooth", block:"start"});
     }
 
     function clearForm(){
@@ -431,7 +513,7 @@
       const time  = document.getElementById("time").value || "";
       const note  = (document.getElementById("note").value || "").trim();
 
-      return [
+      const lines = [
         "Pet Grooming Booking",
         `Name: ${name || "N/A"}`,
         `Phone: ${phone || "N/A"}`,
@@ -443,7 +525,8 @@
         `Date: ${date || "N/A"}`,
         `Time: ${time || "N/A"}`,
         `Notes: ${note || "N/A"}`
-      ].join("\n");
+      ];
+      return lines.join("\n");
     }
 
     function sendToTawk(message){
