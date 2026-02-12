@@ -4,474 +4,430 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Red Dolphin Pet Grooming | Chula Vista</title>
-  <meta name="description" content="Premium pet grooming in Chula Vista. Call or text to book. Bath & Brush, Full Grooming. Closed Tuesdays." />
-  <meta name="theme-color" content="#0b1220" />
+  <meta name="description" content="Premium pet grooming in Chula Vista. Book by SMS and add to your calendar." />
 
   <style>
     :root{
-      --bg:#070a12;
-      --bg2:#0b1220;
-      --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.04);
-      --text:#eef2ff;
-      --muted:rgba(238,242,255,.72);
-      --line:rgba(255,255,255,.12);
-      --shadow:0 18px 50px rgba(0,0,0,.45);
-      --radius:18px;
-
-      --brand:#2b6cff;
-      --brand2:#22c55e;
-      --accent:#f59e0b;
-
-      --max:1120px;
+      --bg0:#070A12;
+      --bg1:#0A1020;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.045);
+      --line: rgba(255,255,255,.12);
+      --text:#F5F7FF;
+      --muted: rgba(245,247,255,.72);
+      --muted2: rgba(245,247,255,.58);
+      --brand:#63B3FF;
+      --brand2:#22C55E;
+      --gold:#F7D37B;
+      --danger:#FF7A7A;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1120px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html,body{margin:0;padding:0;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif}
     body{
-      margin:0;
-      color:var(--text);
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;
       background:
-        radial-gradient(1200px 700px at 10% -10%, rgba(43,108,255,.22), transparent 60%),
-        radial-gradient(900px 500px at 85% 5%, rgba(34,197,94,.16), transparent 55%),
-        linear-gradient(180deg, var(--bg2), var(--bg));
-      letter-spacing:.2px;
+        radial-gradient(1200px 600px at 15% -10%, rgba(99,179,255,.20), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, rgba(247,211,123,.14), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg0));
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
-    .glass{
-      background:linear-gradient(180deg, var(--card), var(--card2));
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      border-radius:var(--radius);
-    }
-
-    /* Top bar */
-    .topbar{
-      position:sticky; top:0; z-index:100;
+    a{color:inherit}
+    .wrap{max-width:var(--max);margin:0 auto;padding:26px}
+    .nav{
+      position:sticky;top:0;z-index:50;
       backdrop-filter: blur(12px);
-      background:rgba(7,10,18,.55);
-      border-bottom:1px solid rgba(255,255,255,.10);
+      background: rgba(7,10,18,.55);
+      border-bottom:1px solid var(--line);
     }
-    .topbar-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:10px 22px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
+    .nav-inner{max-width:var(--max);margin:0 auto;padding:14px 26px;display:flex;gap:14px;align-items:center;justify-content:space-between}
     .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:900;
-      letter-spacing:.3px;
+      display:flex;align-items:center;gap:10px;
+      font-weight:900;letter-spacing:.2px;
     }
-    .logoDot{
-      width:12px;height:12px;border-radius:999px;
-      background:linear-gradient(180deg, var(--brand2), #7cffc1);
-      box-shadow:0 0 0 7px rgba(34,197,94,.12);
+    .logo{
+      width:28px;height:28px;border-radius:10px;
+      background: radial-gradient(circle at 30% 30%, rgba(247,211,123,.9), rgba(99,179,255,.9));
+      box-shadow: 0 0 0 6px rgba(99,179,255,.10);
     }
-    .nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .nav a{
+    .menu{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .menu a{
       padding:8px 10px;border-radius:12px;
-      color:var(--muted);border:1px solid transparent
+      color:var(--muted);text-decoration:none;border:1px solid transparent;
+      transition:.15s ease;
     }
-    .nav a:hover{
-      color:var(--text);
-      border-color:rgba(255,255,255,.14);
-      background:rgba(255,255,255,.05);
+    .menu a:hover{
+      color:var(--text);border-color:var(--line);background:rgba(255,255,255,.06)
     }
-    .cta{display:flex; gap:10px; align-items:center}
 
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid transparent;
-      font-weight:800;
-      cursor:pointer;
-      user-select:none;
-      transition:transform .08s ease, background .2s ease, border-color .2s ease;
-      white-space:nowrap;
+    .card{
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
     }
-    .btn:active{transform:translateY(1px)}
-    .btn.primary{background:rgba(43,108,255,.95); border-color:rgba(43,108,255,.55)}
-    .btn.success{background:rgba(34,197,94,.95); border-color:rgba(34,197,94,.55); color:#04160b}
-    .btn.ghost{background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.14); color:var(--text)}
-    .btn.warn{background:rgba(245,158,11,.14); border-color:rgba(245,158,11,.30)}
-
-    /* Hero */
-    .hero{padding:26px 0 10px}
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:16px;
+    .hero{
+      display:grid;grid-template-columns: 1.1fr .9fr;gap:16px;
       align-items:stretch;
     }
-    @media (max-width:980px){ .heroGrid{grid-template-columns:1fr} }
+    @media (max-width: 920px){ .hero{grid-template-columns:1fr} }
 
-    .heroCard{ padding:22px; }
+    h1{margin:0 0 10px;font-size:38px;line-height:1.06;letter-spacing:-.5px}
+    .sub{color:var(--muted);line-height:1.65;font-size:15.5px}
     .badge{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:8px 10px;
-      border-radius:999px;
-      background:rgba(43,108,255,.14);
-      border:1px solid rgba(43,108,255,.26);
-      color:#cfe0ff;
-      font-size:13px;
-      font-weight:700;
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      border:1px solid rgba(247,211,123,.30);
+      background: rgba(247,211,123,.10);
+      color: rgba(255,255,255,.90);
+      font-size:13px;font-weight:700
     }
-    h1{
-      margin:12px 0 10px;
-      font-size:40px;
-      line-height:1.05;
-      letter-spacing:-.6px;
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:11px 14px;border-radius:14px;border:1px solid transparent;
+      text-decoration:none;font-weight:850;cursor:pointer;transition:.15s ease;
+      user-select:none;
     }
-    @media (max-width:540px){ h1{font-size:34px} }
-    .sub{
-      color:var(--muted);
-      line-height:1.65;
-      font-size:15px;
+    .btn.primary{
+      background: linear-gradient(90deg, rgba(99,179,255,.95), rgba(99,179,255,.75));
+      border-color: rgba(99,179,255,.55);
+      color:#06101F;
     }
-    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
-
-    /* Sections */
-    .section{ padding:18px 0; }
-    .sectionTitle{font-size:22px; margin:0 0 10px; letter-spacing:-.2px}
+    .btn.success{
+      background: linear-gradient(90deg, rgba(34,197,94,.95), rgba(34,197,94,.70));
+      border-color: rgba(34,197,94,.55);
+      color:#06130B;
+    }
+    .btn.ghost{
+      background: rgba(255,255,255,.06);
+      border-color: var(--line);
+      color: var(--text);
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .section{padding:16px 0}
+    .section h2{margin:0 0 10px;font-size:24px;letter-spacing:-.2px}
     .muted{color:var(--muted)}
-    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-    @media (max-width:980px){ .grid2{grid-template-columns:1fr} }
+    .small{font-size:12px;color:var(--muted2)}
+    .hr{height:1px;background:var(--line);margin:14px 0}
 
     /* Services */
-    .serviceCard{ padding:22px; }
-    .serviceName{font-size:30px; font-weight:950; margin:0 0 8px}
-    .serviceSub{font-size:16px; color:#dde6ff; opacity:.95; margin:0 0 10px; line-height:1.5}
-    .serviceInc{font-size:16px; color:var(--text); opacity:.95; margin:0; line-height:1.6}
+    .grid2{display:grid;grid-template-columns: 1fr 1fr; gap:12px}
+    @media (max-width: 900px){ .grid2{grid-template-columns:1fr} }
+    .service-title{font-size:22px;font-weight:900;margin:0 0 6px}
+    .service-sub{color:var(--muted);margin:0 0 8px;line-height:1.55}
+    .service-list{margin:0;padding-left:18px;color:rgba(245,247,255,.88);line-height:1.6}
 
-    /* Booking */
-    .noteBox{
-      padding:12px 14px;
-      border-radius:16px;
-      border:1px solid rgba(245,158,11,.28);
-      background:rgba(245,158,11,.12);
-      color:#ffe7b5;
-      line-height:1.5;
-      font-size:14px;
-    }
-    label{display:block; font-size:13px; color:#dbe4ff; margin:10px 0 6px}
-    .req{color:#ffb4b4; font-weight:900; margin-left:6px}
-    input, select, textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.22);
-      color:var(--text);
-      outline:none;
-    }
-    input:focus, select:focus, textarea:focus{
-      border-color:rgba(43,108,255,.5);
-      box-shadow:0 0 0 4px rgba(43,108,255,.12);
-    }
-    textarea{min-height:96px; resize:vertical}
-    .formRow{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-    @media (max-width:780px){ .formRow{grid-template-columns:1fr} }
-    .helper{font-size:12px; color:var(--muted); margin-top:6px}
-    .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-
-    .msg{
-      margin-top:12px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.04);
-      display:none;
-      line-height:1.5;
-      font-size:14px;
-    }
-    .msg.err{border-color:rgba(255,120,120,.35); background:rgba(255,120,120,.12); color:#ffd4d4;}
-    .msg.ok{border-color:rgba(34,197,94,.35); background:rgba(34,197,94,.12); color:#d9ffe8;}
-
-    /* ✅ Real Photo Carousel */
+    /* Carousel */
     .carousel{
       position:relative;
+      border-radius: 18px;
       overflow:hidden;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow);
+      min-height: 360px;
     }
-    .track{
+    .slides{
       display:flex;
-      transition:transform .45s ease;
-      will-change:transform;
-      touch-action:pan-y;
+      transition: transform .45s ease;
+      will-change: transform;
+      height: 360px;
     }
     .slide{
       min-width:100%;
+      height:360px;
       position:relative;
-      aspect-ratio: 16 / 9;
-      background:rgba(255,255,255,.04);
+      display:flex;
+      align-items:flex-end;
+      justify-content:flex-start;
+      padding:16px;
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
     }
     .slide img{
-      width:100%;
-      height:100%;
+      position:absolute;inset:0;
+      width:100%;height:100%;
       object-fit:cover;
-      display:block;
-      filter:saturate(1.05) contrast(1.05);
+      filter: saturate(1.05) contrast(1.05);
     }
-    .slide:after{
-      content:"";
-      position:absolute; inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55));
-      pointer-events:none;
+    .overlay{
+      position:absolute;inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.72)),
+        radial-gradient(800px 420px at 15% 15%, rgba(99,179,255,.18), transparent 60%);
     }
-    .cap{
-      position:absolute;
-      left:14px; right:14px; bottom:12px;
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:10px;
-      pointer-events:none;
-    }
-    .cap .title{
-      font-weight:950;
-      font-size:18px;
-      text-shadow:0 8px 24px rgba(0,0,0,.6);
-    }
-    .cap .subt{
-      font-size:13px;
-      color:rgba(255,255,255,.8);
-      text-shadow:0 8px 24px rgba(0,0,0,.6);
-      margin-top:4px;
-    }
-    .cap .right{
-      font-size:12px;
-      color:rgba(255,255,255,.75);
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.12);
-      padding:6px 10px;
-      border-radius:999px;
+    .caption{
+      position:relative;z-index:2;
+      max-width: 520px;
+      padding:12px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(10,16,32,.55);
       backdrop-filter: blur(10px);
     }
+    .cap-title{margin:0;font-weight:950;letter-spacing:-.2px}
+    .cap-sub{margin:6px 0 0;color:var(--muted);line-height:1.5;font-size:13.5px}
 
-    .carBtn{
-      position:absolute;
-      top:50%;
+    .navbtn{
+      position:absolute;top:50%;
       transform:translateY(-50%);
-      width:42px;height:42px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(18,26,43,.78);
-      box-shadow:var(--shadow);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
+      width:42px;height:42px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(10,16,32,.55);
+      backdrop-filter: blur(10px);
+      color:var(--text);
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;z-index:5;
+      transition:.15s ease;
       user-select:none;
     }
-    .carBtn:hover{background:rgba(18,26,43,.92)}
-    .carBtn.prev{left:12px}
-    .carBtn.next{right:12px}
+    .navbtn:hover{background: rgba(10,16,32,.75)}
+    .prev{left:12px}
+    .next{right:12px}
 
     .dots{
-      display:flex;
-      gap:8px;
-      justify-content:center;
-      margin-top:10px;
+      position:absolute;bottom:12px;right:12px;z-index:6;
+      display:flex;gap:8px;align-items:center;
+      padding:8px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(10,16,32,.45);
+      backdrop-filter: blur(10px);
     }
     .dot{
-      width:9px;height:9px;
-      border-radius:999px;
-      background:rgba(255,255,255,.22);
-      border:1px solid rgba(255,255,255,.14);
+      width:8px;height:8px;border-radius:99px;
+      background: rgba(255,255,255,.35);
       cursor:pointer;
     }
-    .dot.active{
-      background:rgba(43,108,255,.9);
-      border-color:rgba(43,108,255,.45);
+    .dot.active{background: rgba(247,211,123,.92); box-shadow: 0 0 0 4px rgba(247,211,123,.12)}
+
+    /* Booking form */
+    label{display:block;font-size:13.5px;color:rgba(245,247,255,.90);margin:10px 0 6px}
+    .req{color:rgba(255,180,180,.95);font-weight:900;margin-left:6px}
+    input,select,textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      color: var(--text);
+      outline:none;
     }
+    input:focus,select:focus,textarea:focus{
+      border-color: rgba(99,179,255,.55);
+      box-shadow: 0 0 0 4px rgba(99,179,255,.12);
+    }
+    textarea{min-height:96px;resize:vertical}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:780px){.form-row{grid-template-columns:1fr}}
+    .notice{
+      padding:12px 14px;border-radius:14px;
+      border:1px solid rgba(247,211,123,.28);
+      background: rgba(247,211,123,.10);
+      color: rgba(255,255,255,.90);
+      font-size:14px;line-height:1.55;
+    }
+    .error,.ok{
+      margin-top:10px;padding:10px 12px;border-radius:14px;
+      display:none;font-size:14px;line-height:1.5;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+    }
+    .error{border-color: rgba(255,122,122,.35); background: rgba(255,122,122,.10); color: rgba(255,220,220,.95)}
+    .ok{border-color: rgba(34,197,94,.35); background: rgba(34,197,94,.10); color: rgba(220,255,235,.95)}
 
     /* Map */
-    .mapWrap{border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.12); box-shadow:var(--shadow)}
-    iframe{display:block; width:100%; height:340px; border:0}
+    .map-wrap{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
+    iframe{display:block;width:100%;height:340px;border:0}
 
-    /* Footer */
-    .footer{padding:14px 0 28px; color:var(--muted); font-size:12px; opacity:.9}
-
-    /* Floating */
+    /* Floating buttons */
     .fab{
-      position:fixed; right:16px; bottom:18px;
-      display:flex; flex-direction:column; gap:10px;
-      z-index:150;
+      position:fixed;right:16px;bottom:18px;
+      display:flex;flex-direction:column;gap:10px;z-index:80
     }
     .fab a{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 12px;
-      border-radius:999px;
-      background:rgba(18,26,43,.92);
+      display:inline-flex;align-items:center;gap:10px;
+      background: rgba(10,16,32,.70);
       border:1px solid rgba(255,255,255,.14);
-      box-shadow:var(--shadow);
-      font-weight:800;
+      padding:10px 12px;border-radius:999px;text-decoration:none;color:var(--text);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
     }
-    .fab .call{border-color:rgba(34,197,94,.35)}
-    .fab .sms{border-color:rgba(43,108,255,.35)}
-    .fab .dir{border-color:rgba(245,158,11,.30)}
+    .fab .call{border-color: rgba(34,197,94,.32)}
+    .fab .sms{border-color: rgba(99,179,255,.32)}
   </style>
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="topbar-inner">
+  <div class="nav">
+    <div class="nav-inner">
       <div class="brand">
-        <span class="logoDot"></span>
+        <span class="logo"></span>
         <span>Red Dolphin Pet Grooming</span>
       </div>
-      <div class="nav">
+      <div class="menu">
         <a href="#services">Services</a>
         <a href="#book">Book</a>
-        <a href="#gallery">Gallery</a>
         <a href="#location">Location</a>
         <a href="#contact">Contact</a>
-      </div>
-      <div class="cta">
-        <a class="btn success" href="tel:+16197540193">Call</a>
-        <a class="btn primary" href="sms:+16197540193?&body=Hi%20Red%20Dolphin%20Pet%20Grooming,%20I'd%20like%20to%20book%20an%20appointment.">Text</a>
       </div>
     </div>
   </div>
 
   <div class="wrap">
-    <div class="hero">
-      <div class="heroGrid">
-        <div class="glass heroCard">
-          <span class="badge">Premium care • Clean salon • Text booking</span>
-          <h1>High-End Grooming.<br/>Calm, Clean, Comfortable.</h1>
+
+    <!-- HERO -->
+    <div class="section">
+      <div class="hero">
+
+        <div class="card">
+          <span class="badge">Premium care • Clean finish • Fast booking</span>
+          <h1>Luxury Grooming, Calm Experience.</h1>
           <div class="sub">
-            <b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>
+            Address: <b>1680 E Broadway Suite E, Chula Vista, CA 91911</b><br/>
             Phone: <b>(619) 754-0193</b><br/>
-            Hours: <b>10:00 AM – 6:00 PM</b> (Closed Tuesdays)
+            Hours: <b>10:00 AM – 6:00 PM</b> (Closed Tuesday)
           </div>
 
-          <div class="heroActions">
-            <a class="btn success" href="tel:+16197540193">📞 Call Now</a>
-            <a class="btn primary" href="#book">📅 Book Appointment</a>
-            <a class="btn ghost" href="https://www.google.com/maps?q=1680%20E%20Broadway%20Suite%20E,%20Chula%20Vista,%20CA" target="_blank" rel="noopener">📍 Get Directions</a>
+          <div class="row">
+            <a class="btn success" href="tel:+16197540193">📞 Call</a>
+            <a class="btn primary" href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">💬 Text</a>
+            <a class="btn ghost" href="#book">📅 Book Now</a>
+          </div>
+
+          <div class="hr"></div>
+          <div class="small">
+            Tip: Booking is easiest by text. After submit, we generate an Apple/Google Calendar file with a reminder <b>1 day before</b>.
           </div>
         </div>
 
-        <div class="glass heroCard">
-          <div class="sectionTitle" style="margin-top:0">Quick Booking</div>
-          <div class="noteBox">
-            Fill the form in 20 seconds. We’ll open a text message with your details.
-            You’ll also get a calendar reminder <b>1 day before</b> to confirm.
+        <!-- Carousel -->
+        <div class="carousel" aria-label="Gallery carousel">
+          <div class="slides" id="slides">
+            <!-- Slide 1 -->
+            <div class="slide">
+              <img src="/assets/1.jpg" alt="Red Dolphin Pet Grooming - storefront" loading="lazy"
+                   onerror="this.remove(); this.parentElement.style.background = placeholderBg(1);" />
+              <div class="overlay"></div>
+              <div class="caption">
+                <p class="cap-title">A clean, premium environment</p>
+                <p class="cap-sub">Warm welcome, sanitized tools, and a calm grooming flow.</p>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide">
+              <img src="/assets/2.jpg" alt="Before & after grooming" loading="lazy"
+                   onerror="this.remove(); this.parentElement.style.background = placeholderBg(2);" />
+              <div class="overlay"></div>
+              <div class="caption">
+                <p class="cap-title">Fresh look, smooth finish</p>
+                <p class="cap-sub">We focus on details: paws, face, coat, and clean edges.</p>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide">
+              <img src="/assets/3.jpg" alt="Bath and blow dry" loading="lazy"
+                   onerror="this.remove(); this.parentElement.style.background = placeholderBg(3);" />
+              <div class="overlay"></div>
+              <div class="caption">
+                <p class="cap-title">Bath & Brush excellence</p>
+                <p class="cap-sub">Conditioning, drying, and de-shed care for comfort.</p>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="slide">
+              <img src="/assets/4.jpg" alt="Full grooming service" loading="lazy"
+                   onerror="this.remove(); this.parentElement.style.background = placeholderBg(4);" />
+              <div class="overlay"></div>
+              <div class="caption">
+                <p class="cap-title">Full Grooming service</p>
+                <p class="cap-sub">Trim & style tailored to your pet’s coat and needs.</p>
+              </div>
+            </div>
           </div>
-          <div class="heroActions" style="margin-top:14px">
-            <a class="btn primary" href="#book">Book Now</a>
-            <a class="btn ghost" href="#gallery">See Photos</a>
-          </div>
-          <div class="sub" style="margin-top:14px">
-            Prefer a quick text instead? Tap <b>Text</b> in the top right.
-          </div>
+
+          <div class="navbtn prev" role="button" aria-label="Previous" onclick="prevSlide()">‹</div>
+          <div class="navbtn next" role="button" aria-label="Next" onclick="nextSlide()">›</div>
+
+          <div class="dots" id="dots" aria-label="Slide indicators"></div>
         </div>
+
       </div>
     </div>
 
+    <!-- SERVICES -->
     <div class="section" id="services">
-      <div class="sectionTitle">Services</div>
-      <div class="muted">Dogs by weight and coat length • Cats available</div>
+      <h2>Services</h2>
+      <div class="muted">Simple menu. Premium execution. Dogs & cats available.</div>
 
       <div class="grid2" style="margin-top:12px">
-        <div class="glass serviceCard">
-          <div class="serviceName">Bath & Brush</div>
-          <div class="serviceSub">Gentle bath, blow dry, brush-out</div>
-          <p class="serviceInc">Includes: nails, paw hair, conditioning, ears, and anal glands.</p>
+        <div class="card">
+          <div class="service-title">Bath & Brush</div>
+          <div class="service-sub">Best for routine care, de-shed, and a clean fresh coat.</div>
+          <ul class="service-list">
+            <li>Bath + blow dry</li>
+            <li>Nail trim</li>
+            <li>Paw hair & light tidy</li>
+            <li>Ear cleaning</li>
+            <li>Anal gland (upon request)</li>
+          </ul>
         </div>
 
-        <div class="glass serviceCard">
-          <div class="serviceName">Full Grooming</div>
-          <div class="serviceSub">Bath + haircut + styling</div>
-          <p class="serviceInc">Includes: hair trimming, brushing, nail trimming, paw hair removal, conditioning, facial cleaning, ear cleaning, and anal gland cleaning.</p>
+        <div class="card">
+          <div class="service-title">Full Grooming</div>
+          <div class="service-sub">Complete grooming with trimming and styling.</div>
+          <ul class="service-list">
+            <li>Bath + blow dry</li>
+            <li>Hair trimming & styling</li>
+            <li>Face & sanitary clean-up</li>
+            <li>Nail trim + paw tidy</li>
+            <li>Ear cleaning</li>
+            <li>Anal gland (upon request)</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <!-- ✅ Real Photo Carousel -->
-    <div class="section" id="gallery">
-      <div class="sectionTitle">Gallery</div>
-      <div class="muted">Real photos from our salon. (Swipe on mobile)</div>
-
-      <div class="carousel glass" style="margin-top:12px">
-        <div class="track" id="track">
-          <!-- ✅ Replace these with your real photos -->
-          <div class="slide">
-            <img src="assets/1.jpg" alt="Red Dolphin Pet Grooming - Salon photo 1" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221280%22 height=%22720%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23121a2b%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23a8b3d6%22 font-size=%2236%22 font-family=%22Arial%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Upload assets/1.jpg</text></svg>';">
-            <div class="cap">
-              <div>
-                <div class="title">Clean & Calm Salon</div>
-                <div class="subt">Premium products • Sanitized tools</div>
-              </div>
-              <div class="right">Swipe →</div>
-            </div>
-          </div>
-
-          <div class="slide">
-            <img src="assets/2.jpg" alt="Red Dolphin Pet Grooming - Salon photo 2" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221280%22 height=%22720%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23121a2b%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23a8b3d6%22 font-size=%2236%22 font-family=%22Arial%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Upload assets/2.jpg</text></svg>';">
-            <div class="cap">
-              <div>
-                <div class="title">Before & After</div>
-                <div class="subt">High-end finishing • Detail work</div>
-              </div>
-              <div class="right">Tap arrows</div>
-            </div>
-          </div>
-
-          <div class="slide">
-            <img src="assets/3.jpg" alt="Red Dolphin Pet Grooming - Salon photo 3" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%221280%22 height=%22720%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23121a2b%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23a8b3d6%22 font-size=%2236%22 font-family=%22Arial%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Upload assets/3.jpg</text></svg>';">
-            <div class="cap">
-              <div>
-                <div class="title">Comfort First</div>
-                <div class="subt">Gentle handling • Stress-free</div>
-              </div>
-              <div class="right">1 / 3</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="carBtn prev" id="prev" aria-label="Previous">‹</div>
-        <div class="carBtn next" id="next" aria-label="Next">›</div>
-      </div>
-
-      <div class="dots" id="dots" aria-label="Carousel dots"></div>
-    </div>
-
-    <!-- Booking -->
+    <!-- BOOKING -->
     <div class="section" id="book">
-      <div class="sectionTitle">Book an Appointment</div>
-      <div class="noteBox">
-        Required fields are marked with <b>*</b>. Closed Tuesdays. Hours <b>10:00 AM – 6:00 PM</b>.
-        After submit: (1) we open a text message with your details, (2) a calendar reminder downloads for <b>1 day before</b> confirmation.
+      <h2>Book</h2>
+      <div class="notice">
+        Required fields are marked with <b>*</b>. After submit: (1) your text message opens with booking details, (2) we send the same details to live chat (if supported),
+        and (3) a calendar file downloads with a reminder <b>1 day before</b>.
       </div>
 
-      <div class="glass" style="padding:22px; margin-top:12px">
-        <div class="formRow">
+      <div class="card" style="margin-top:12px">
+        <div class="form-row">
           <div>
-            <label>Full Name <span class="req">*</span></label>
-            <input id="ownerName" placeholder="Your name" autocomplete="name" />
+            <label>Owner Name <span class="req">*</span></label>
+            <input id="ownerName" placeholder="Full name" autocomplete="name" />
           </div>
           <div>
-            <label>Phone Number <span class="req">*</span></label>
-            <input id="ownerPhone" placeholder="(619) 555-1234" inputmode="tel" autocomplete="tel" />
+            <label>Owner Phone <span class="req">*</span></label>
+            <input id="ownerPhone" placeholder="(xxx) xxx-xxxx" inputmode="tel" autocomplete="tel" />
           </div>
         </div>
 
-        <div class="formRow">
+        <div class="form-row">
           <div>
             <label>Pet Name(s) <span class="req">*</span></label>
             <input id="petNames" placeholder="e.g., Coco / Lucky" />
-            <div class="helper">Multiple pets? List names separated by “/”.</div>
           </div>
+          <div>
+            <label>Vaccinated? <span class="req">*</span></label>
+            <select id="vaccinated">
+              <option value="">Select</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="Not sure">Not sure</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
           <div>
             <label>Service <span class="req">*</span></label>
             <select id="service">
@@ -480,166 +436,224 @@
               <option value="Full Grooming">Full Grooming</option>
             </select>
           </div>
+          <div>
+            <label>Appointment (Date & Time) <span class="req">*</span></label>
+            <!-- ✅ 日期+时间合并 -->
+            <input id="appt" type="datetime-local" />
+            <div class="small" style="margin-top:6px">Closed Tuesday. Hours: 10:00 AM – 6:00 PM.</div>
+          </div>
         </div>
 
-        <div class="formRow">
-          <div>
-            <label>Preferred Date & Time <span class="req">*</span></label>
-            <input id="datetime" type="datetime-local" />
-            <div class="helper">We’ll confirm by text. (Closed Tuesdays)</div>
-          </div>
+        <div class="form-row">
           <div>
             <label>Notes (optional)</label>
-            <textarea id="note" placeholder="Breed, size, temperament, special requests..."></textarea>
+            <textarea id="note" placeholder="Breed, temperament, special requests..."></textarea>
+          </div>
+          <div>
+            <label>Reminder</label>
+            <div class="sub">
+              We generate a calendar reminder <b>1 day before</b>. When it pops up, open the event and tap <b>Confirm</b> to send a text.
+            </div>
           </div>
         </div>
 
-        <div class="row" style="margin-top:14px">
-          <button class="btn primary" type="button" onclick="submitBooking()">Submit Booking</button>
+        <div class="row">
+          <button class="btn primary" type="button" onclick="submitBooking()">Submit</button>
           <button class="btn ghost" type="button" onclick="clearForm()">Clear</button>
-          <a class="btn warn" href="sms:+16197540193">Text Manually</a>
+          <a class="btn ghost" href="sms:+16197540193">Text Manually</a>
         </div>
 
-        <div id="err" class="msg err"></div>
-        <div id="ok" class="msg ok"></div>
+        <div id="err" class="error"></div>
+        <div id="ok" class="ok"></div>
       </div>
     </div>
 
-    <!-- Location -->
+    <!-- LOCATION -->
     <div class="section" id="location">
-      <div class="sectionTitle">Location</div>
-      <div class="muted">Tap “Get Directions” for the fastest navigation.</div>
-      <div class="mapWrap" style="margin-top:12px">
-        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=1680%20E%20Broadway%20Suite%20E,%20Chula%20Vista,%20CA&output=embed">
+      <h2>Location</h2>
+      <div class="muted">Find us on Google Maps.</div>
+      <div class="map-wrap" style="margin-top:12px">
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=1680%20E%20Broadway%20Suite%20E,%20Chula%20Vista,%20CA%2091911&output=embed">
         </iframe>
       </div>
     </div>
 
-    <!-- Contact -->
+    <!-- CONTACT -->
     <div class="section" id="contact">
-      <div class="sectionTitle">Contact</div>
-      <div class="glass" style="padding:22px">
+      <h2>Contact</h2>
+      <div class="card">
         <div class="sub">
           Phone: <b>(619) 754-0193</b><br/>
-          Address: <b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>
+          Address: <b>1680 E Broadway Suite E, Chula Vista, CA 91911</b><br/>
           Live chat: bottom-right chat widget
         </div>
-        <div class="row" style="margin-top:14px">
+        <div class="row">
           <a class="btn success" href="tel:+16197540193">📞 Call</a>
-          <a class="btn primary" href="sms:+16197540193?&body=Hi%20Red%20Dolphin%20Pet%20Grooming,%20I'd%20like%20to%20book%20an%20appointment.">💬 Text</a>
-          <a class="btn ghost" href="https://www.google.com/maps?q=1680%20E%20Broadway%20Suite%20E,%20Chula%20Vista,%20CA" target="_blank" rel="noopener">📍 Get Directions</a>
+          <a class="btn primary" href="sms:+16197540193">💬 Text</a>
         </div>
       </div>
-
-      <div class="footer">© <span id="year"></span> Red Dolphin Pet Grooming. All rights reserved.</div>
+      <div class="small" style="margin-top:10px;opacity:.86">© <span id="year"></span> Red Dolphin Pet Grooming</div>
     </div>
+
   </div>
 
   <div class="fab">
     <a class="call" href="tel:+16197540193">📞 Call</a>
-    <a class="sms" href="sms:+16197540193?&body=Hi%20Red%20Dolphin%20Pet%20Grooming,%20I'd%20like%20to%20book%20an%20appointment.">💬 Text</a>
-    <a class="dir" href="https://www.google.com/maps?q=1680%20E%20Broadway%20Suite%20E,%20Chula%20Vista,%20CA" target="_blank" rel="noopener">📍 Directions</a>
+    <a class="sms" href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">💬 Text</a>
   </div>
 
   <script>
     const BUSINESS_PHONE = "+16197540193";
-    const CLOSED_WEEKDAY = 2; // Tuesday
-    const OPEN_HOUR = 10;
-    const CLOSE_HOUR = 18;
 
-    function $(id){ return document.getElementById(id); }
+    // Placeholder backgrounds (used when images are missing)
+    function placeholderBg(i){
+      const themes = [
+        "linear-gradient(135deg, rgba(99,179,255,.22), rgba(255,255,255,.05))",
+        "linear-gradient(135deg, rgba(247,211,123,.18), rgba(255,255,255,.05))",
+        "linear-gradient(135deg, rgba(34,197,94,.14), rgba(255,255,255,.05))",
+        "linear-gradient(135deg, rgba(99,179,255,.16), rgba(247,211,123,.12))"
+      ];
+      return themes[(i-1) % themes.length];
+    }
 
+    // Carousel
+    let idx = 0;
+    let autoTimer = null;
+    const slidesEl = () => document.getElementById("slides");
+    const dotsEl = () => document.getElementById("dots");
+    const slideCount = () => slidesEl().children.length;
+
+    function renderDots(){
+      const n = slideCount();
+      dotsEl().innerHTML = "";
+      for(let i=0;i<n;i++){
+        const d = document.createElement("div");
+        d.className = "dot" + (i===idx ? " active":"");
+        d.onclick = ()=>goTo(i);
+        dotsEl().appendChild(d);
+      }
+    }
+    function goTo(i){
+      const n = slideCount();
+      idx = (i + n) % n;
+      slidesEl().style.transform = `translateX(-${idx*100}%)`;
+      renderDots();
+    }
+    function nextSlide(){ goTo(idx+1); }
+    function prevSlide(){ goTo(idx-1); }
+
+    function startAuto(){
+      stopAuto();
+      autoTimer = setInterval(nextSlide, 5500);
+    }
+    function stopAuto(){
+      if(autoTimer) clearInterval(autoTimer);
+      autoTimer = null;
+    }
+
+    // Touch swipe for mobile
+    let startX = 0;
+    let down = false;
+    function bindSwipe(){
+      const c = document.querySelector(".carousel");
+      if(!c) return;
+      c.addEventListener("pointerdown", (e)=>{ down=true; startX=e.clientX; stopAuto(); });
+      c.addEventListener("pointerup", (e)=>{
+        if(!down) return; down=false;
+        const dx = e.clientX - startX;
+        if(Math.abs(dx) > 40){
+          dx < 0 ? nextSlide() : prevSlide();
+        }
+        startAuto();
+      });
+      c.addEventListener("pointercancel", ()=>{ down=false; startAuto(); });
+    }
+
+    // Helpers UI
     function showError(msg){
-      const el = $("err");
+      const el = document.getElementById("err");
       el.textContent = msg;
       el.style.display = "block";
-      $("ok").style.display = "none";
-      $("book").scrollIntoView({behavior:"smooth", block:"start"});
+      document.getElementById("ok").style.display = "none";
+      document.getElementById("book").scrollIntoView({behavior:"smooth", block:"start"});
     }
     function showOk(msg){
-      const el = $("ok");
+      const el = document.getElementById("ok");
       el.textContent = msg;
       el.style.display = "block";
-      $("err").style.display = "none";
+      document.getElementById("err").style.display = "none";
     }
 
     function clearForm(){
-      ["ownerName","ownerPhone","petNames","datetime","note"].forEach(id=>$(id).value="");
-      $("service").value="";
-      $("err").style.display="none";
-      $("ok").style.display="none";
+      ["ownerName","ownerPhone","petNames","appt","note"].forEach(id=>document.getElementById(id).value="");
+      document.getElementById("vaccinated").value="";
+      document.getElementById("service").value="";
+      document.getElementById("err").style.display="none";
+      document.getElementById("ok").style.display="none";
     }
 
-    function formatLocalDT(dt){
-      const opts = { weekday:"short", month:"short", day:"numeric", year:"numeric", hour:"numeric", minute:"2-digit" };
-      return dt.toLocaleString("en-US", opts);
-    }
-
-    function setMinDateTime(){
-      const input = $("datetime");
-      if(!input) return;
-      const now = new Date();
-      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-      input.min = now.toISOString().slice(0,16);
-    }
-
-    function validateBusinessRules(dt){
-      if (dt.getDay() === CLOSED_WEEKDAY) return "We are CLOSED on Tuesdays. Please choose another day.";
-      const h = dt.getHours();
-      if (h < OPEN_HOUR || h >= CLOSE_HOUR) return "Please choose a time between 10:00 AM and 6:00 PM.";
-      if (dt.getTime() < Date.now()) return "Please choose a future date & time.";
-      return "";
-    }
-
-    function onDateTimeChange(){
-      const v = $("datetime").value;
-      if(!v) return;
-      const dt = new Date(v);
-      if (isNaN(dt.getTime())) return;
-      const err = validateBusinessRules(dt);
-      if(err){
-        alert(err);
-        $("datetime").value = "";
-        $("datetime").focus();
+    // Format local datetime to friendly US text
+    function formatUSLocal(dt){
+      try{
+        return dt.toLocaleString("en-US", {
+          weekday:"short",
+          year:"numeric",
+          month:"short",
+          day:"numeric",
+          hour:"numeric",
+          minute:"2-digit"
+        });
+      }catch(e){
+        return dt.toString();
       }
     }
 
-    function buildBookingMessage(ownerName, ownerPhone, petNames, service, dt, note){
-      const when = formatLocalDT(dt);
+    function buildBookingMessage(){
+      const ownerName  = (document.getElementById("ownerName").value || "").trim();
+      const ownerPhone = (document.getElementById("ownerPhone").value || "").trim();
+      const petNames   = (document.getElementById("petNames").value || "").trim();
+      const vaccinated = document.getElementById("vaccinated").value;
+      const service    = document.getElementById("service").value;
+      const apptRaw    = document.getElementById("appt").value;
+      const note       = (document.getElementById("note").value || "").trim();
+
+      const dt = apptRaw ? new Date(apptRaw) : null;
+      const apptText = dt && !isNaN(dt.getTime()) ? formatUSLocal(dt) : apptRaw;
+
       return [
-        `Hi Red Dolphin Pet Grooming, I'd like to book an appointment.`,
-        ``,
-        `Name: ${ownerName}`,
-        `Phone: ${ownerPhone}`,
-        `Pet(s): ${petNames}`,
+        "Pet Grooming Booking",
+        `Owner: ${ownerName}`,
+        `Owner Phone: ${ownerPhone}`,
+        `Pet Name(s): ${petNames}`,
+        `Vaccinated: ${vaccinated}`,
         `Service: ${service}`,
-        `Preferred time: ${when}`,
-        note ? `Notes: ${note}` : `Notes: N/A`,
-        ``,
-        `Thanks!`
-      ].join("\n");
+        `Appointment: ${apptText}`,
+        `Notes: ${note || "N/A"}`
+      ].join("\\n");
     }
 
-    function makeConfirmSmsLink(ownerName, dtISO, petNames){
-      const dt = new Date(dtISO);
-      const when = formatLocalDT(dt);
-      const body = encodeURIComponent(`CONFIRM - ${ownerName} - ${when} - ${petNames}`);
+    function makeConfirmSmsLink(ownerName, apptText, petNames){
+      const body = encodeURIComponent(`CONFIRM - ${ownerName} - ${apptText} - ${petNames}`);
       return `sms:${BUSINESS_PHONE}?&body=${body}`;
     }
 
-    function downloadICS(ownerName, service, dtISO, petNames){
-      const dtStart = new Date(dtISO);
-      if (isNaN(dtStart.getTime())) return;
-      const dtEnd = new Date(dtStart.getTime() + 60*60*1000);
+    function pad(n){ return String(n).padStart(2,"0"); }
+    function toICS(dt){
+      // local time (no Z) works well for Apple/Google calendars
+      return `${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}00`;
+    }
 
-      function pad(n){ return String(n).padStart(2,"0"); }
-      function toICS(dt){
-        return `${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}00`;
-      }
-
-      const confirmLink = makeConfirmSmsLink(ownerName, dtISO, petNames);
+    // Create ICS with 1-day reminder
+    function downloadICS(ownerName, service, dtStart, petNames){
+      if(!dtStart || isNaN(dtStart.getTime())) return;
+      const dtEnd = new Date(dtStart.getTime() + 60*60*1000); // 1 hour
       const uid = `${Date.now()}-${Math.random().toString(16).slice(2)}@reddolphin`;
+
+      const apptText = formatUSLocal(dtStart);
+      const confirmLink = makeConfirmSmsLink(ownerName, apptText, petNames);
 
       const description =
         `Booking for: ${ownerName}\\n` +
@@ -659,9 +673,9 @@ UID:${uid}
 DTSTAMP:${toICS(new Date())}
 DTSTART:${toICS(dtStart)}
 DTEND:${toICS(dtEnd)}
-SUMMARY:Red Dolphin - ${service}
+SUMMARY:Pet Grooming - ${service}
 DESCRIPTION:${description}
-LOCATION:1680 E Broadway Suite E, Chula Vista, CA
+LOCATION:1680 E Broadway Suite E, Chula Vista, CA 91911
 BEGIN:VALARM
 TRIGGER:-P1D
 ACTION:DISPLAY
@@ -670,11 +684,11 @@ END:VALARM
 END:VEVENT
 END:VCALENDAR`;
 
-      const blob = new Blob([ics], {type:"text/calendar;charset=utf-8"});
+      const blob = new Blob([ics], {type: "text/calendar;charset=utf-8"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `Booking-${dtStart.getFullYear()}-${pad(dtStart.getMonth()+1)}-${pad(dtStart.getDate())}-${ownerName.replace(/\s+/g,"_")}.ics`;
+      a.download = `Booking-${dtStart.getFullYear()}-${pad(dtStart.getMonth()+1)}-${pad(dtStart.getDate())}-${ownerName.replace(/\\s+/g,"_")}.ics`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -692,28 +706,26 @@ END:VCALENDAR`;
     }
 
     function submitBooking(){
-      const ownerName  = ($("ownerName").value || "").trim();
-      const ownerPhone = ($("ownerPhone").value || "").trim();
-      const petNames   = ($("petNames").value || "").trim();
-      const service    = $("service").value;
-      const dtISO      = $("datetime").value;
-      const note       = ($("note").value || "").trim();
+      const ownerName  = (document.getElementById("ownerName").value || "").trim();
+      const ownerPhone = (document.getElementById("ownerPhone").value || "").trim();
+      const petNames   = (document.getElementById("petNames").value || "").trim();
+      const vaccinated = document.getElementById("vaccinated").value;
+      const service    = document.getElementById("service").value;
+      const apptRaw    = document.getElementById("appt").value;
 
-      if(!ownerName) return showError("Full Name is required.");
-      if(!ownerPhone) return showError("Phone Number is required.");
+      if(!ownerName) return showError("Owner Name is required.");
+      if(!ownerPhone) return showError("Owner Phone is required.");
       if(!petNames) return showError("Pet Name(s) is required.");
+      if(!vaccinated) return showError("Please select vaccination status.");
       if(!service) return showError("Please select a service.");
-      if(!dtISO) return showError("Please choose your preferred date & time.");
+      if(!apptRaw) return showError("Appointment (Date & Time) is required.");
 
-      const dt = new Date(dtISO);
-      if(isNaN(dt.getTime())) return showError("Invalid date & time. Please try again.");
+      const dtStart = new Date(apptRaw);
+      if(isNaN(dtStart.getTime())) return showError("Please enter a valid appointment date & time.");
 
-      const ruleErr = validateBusinessRules(dt);
-      if(ruleErr) return showError(ruleErr);
+      const msg = buildBookingMessage();
 
-      const msg = buildBookingMessage(ownerName, ownerPhone, petNames, service, dt, note);
-
-      // Send to Tawk (optional)
+      // Send to Tawk (best effort)
       let sent = sendToTawk(msg);
       if(!sent){
         let tries = 0;
@@ -723,91 +735,21 @@ END:VCALENDAR`;
         }, 700);
       }
 
-      // Download calendar reminder
-      downloadICS(ownerName, service, dtISO, petNames);
+      // Download ICS with 1-day reminder
+      downloadICS(ownerName, service, dtStart, petNames);
 
       // Open SMS
-      window.location.href = `sms:${BUSINESS_PHONE}?&body=${encodeURIComponent(msg)}`;
+      const smsBody = encodeURIComponent(msg);
+      window.location.href = `sms:${BUSINESS_PHONE}?&body=${smsBody}`;
 
-      showOk("Submitted! Please send the text message to confirm. A calendar reminder was downloaded (1 day before).");
+      showOk("Submitted! Please send the text to confirm booking. A calendar reminder was downloaded (1 day before).");
     }
 
-    // ✅ Carousel JS (autoplay + swipe)
-    (function initCarousel(){
-      const track = document.getElementById("track");
-      const slides = Array.from(track.children);
-      const prev = document.getElementById("prev");
-      const next = document.getElementById("next");
-      const dotsWrap = document.getElementById("dots");
-
-      let idx = 0;
-      let autoplay = true;
-      let timer = null;
-
-      function renderDots(){
-        dotsWrap.innerHTML = "";
-        slides.forEach((_, i)=>{
-          const d = document.createElement("div");
-          d.className = "dot" + (i===idx ? " active":"");
-          d.addEventListener("click", ()=>go(i, true));
-          dotsWrap.appendChild(d);
-        });
-      }
-
-      function go(i, user=false){
-        idx = (i + slides.length) % slides.length;
-        track.style.transform = `translateX(-${idx*100}%)`;
-        renderDots();
-        if(user) restart();
-      }
-
-      function restart(){
-        if(timer) clearInterval(timer);
-        if(!autoplay) return;
-        timer = setInterval(()=>go(idx+1), 4200);
-      }
-
-      prev.addEventListener("click", ()=>go(idx-1, true));
-      next.addEventListener("click", ()=>go(idx+1, true));
-
-      // Swipe support
-      let startX = 0, currentX = 0, dragging=false;
-
-      track.addEventListener("touchstart", (e)=>{
-        dragging = true;
-        startX = e.touches[0].clientX;
-        currentX = startX;
-        if(timer) clearInterval(timer);
-      }, {passive:true});
-
-      track.addEventListener("touchmove", (e)=>{
-        if(!dragging) return;
-        currentX = e.touches[0].clientX;
-      }, {passive:true});
-
-      track.addEventListener("touchend", ()=>{
-        if(!dragging) return;
-        dragging=false;
-        const diff = currentX - startX;
-        if(Math.abs(diff) > 45){
-          diff < 0 ? go(idx+1, true) : go(idx-1, true);
-        }else{
-          go(idx, true);
-        }
-        restart();
-      });
-
-      renderDots();
-      go(0);
-      restart();
-    })();
-
-    document.addEventListener("DOMContentLoaded", ()=>{
-      document.getElementById("year").textContent = new Date().getFullYear();
-      setMinDateTime();
-      const input = document.getElementById("datetime");
-      if(input) input.addEventListener("change", onDateTimeChange);
-    });
+    // Init
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderDots();
+    bindSwipe();
+    startAuto();
   </script>
 
   <!-- Tawk.to -->
