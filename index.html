@@ -67,7 +67,7 @@
     .small{font-size:12px;color:var(--muted)}
     .hr{height:1px;background:var(--line);margin:14px 0}
 
-    /* ✅ 放大你指定的内容 */
+    /* Services */
     .service-title{font-size:30px;font-weight:900;margin:0 0 8px}
     .service-sub{font-size:18px;color:#dbe4ff;opacity:.95;margin:0 0 10px;line-height:1.5}
     .service-includes{font-size:18px;color:var(--text);opacity:.95;margin:0;line-height:1.6}
@@ -148,28 +148,28 @@
   <div class="wrap">
     <div class="section">
       <div class="card">
-        <span class="pill">Live chat • SMS booking</span>
-        <h1>Professional Pet Grooming Services</h1>
+        <span class="pill">Live chat • Text booking</span>
+        <h1>Professional Pet Grooming</h1>
         <div class="sub">
           Address: <b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>
-          Phone: <b>(619) 754-0193</b>
+          Phone: <b>(619) 754-0193</b><br/>
+          Hours: <b>10:00 AM – 6:00 PM</b> (Closed Tuesdays)
         </div>
         <div class="row">
           <a class="btn success" href="tel:+16197540193">📞 Call</a>
-          <a class="btn primary" href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">💬 SMS</a>
+          <a class="btn primary" href="sms:+16197540193?&body=Hi%20Red%20Dolphin%20Pet%20Grooming,%20I%27d%20like%20to%20book%20an%20appointment.">💬 Text</a>
           <a class="btn ghost" href="#book">📅 Book Now</a>
         </div>
       </div>
     </div>
 
-    <!-- ✅ 放大后的服务说明（去掉价格区） -->
     <div class="section" id="services">
       <h2>Services</h2>
       <div class="muted">Dogs by weight and coat length • Cats available</div>
 
       <div class="card service-card" style="margin-top:12px">
         <div class="service-title">Bath & Brush</div>
-        <div class="service-sub">Dogs by weight and coat length • Cats available</div>
+        <div class="service-sub">Gentle bath, blow dry, brush-out</div>
         <div class="service-includes">
           Includes: nails, paw hair, conditioning, ears, and anal glands.
         </div>
@@ -177,7 +177,7 @@
 
       <div class="card service-card" style="margin-top:14px">
         <div class="service-title">Full Grooming</div>
-        <div class="service-sub">Dogs by weight and coat length • Cats available</div>
+        <div class="service-sub">Bath + haircut + styling</div>
         <div class="service-includes">
           Includes: hair trimming, brushing, nail trimming, paw hair removal, conditioning, facial cleaning,
           ear cleaning, and anal gland cleaning.
@@ -185,43 +185,23 @@
       </div>
     </div>
 
-    <!-- ✅ 预约表单（必填项 + 前一天确认提醒） -->
+    <!-- ✅ Booking (美国习惯：简洁、合并时间) -->
     <div class="section" id="book">
       <h2>Book Now</h2>
       <div class="notice">
-        Required fields are marked with <b>*</b>. After submit: (1) SMS opens with booking details, (2) the same details will be sent to Tawk (if supported),
-        and (3) a calendar file downloads — your phone can remind you <b>1 day before</b> to confirm.
+        Fields marked with <b>*</b> are required. After you submit, we’ll open a text message with your booking details.
+        A calendar reminder will also download to help you <b>confirm 1 day before</b>.
       </div>
 
       <div class="card" style="margin-top:12px">
         <div class="form-row">
           <div>
-            <label>Owner Name <span class="req">*</span></label>
-            <input id="ownerName" placeholder="Owner full name" />
+            <label>Full Name <span class="req">*</span></label>
+            <input id="ownerName" placeholder="Your name" />
           </div>
           <div>
-            <label>Owner Phone <span class="req">*</span></label>
-            <input id="ownerPhone" placeholder="(xxx) xxx-xxxx" />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div>
-            <label>How many pets? <span class="req">*</span></label>
-            <select id="petCount">
-              <option value="">Select</option>
-              <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-              <option value="4">4</option><option value="5+">5+</option>
-            </select>
-          </div>
-          <div>
-            <label>Pet Type <span class="req">*</span></label>
-            <select id="petType">
-              <option value="">Select</option>
-              <option value="Dog">Dog</option>
-              <option value="Cat">Cat</option>
-              <option value="Mixed">Mixed (Dog & Cat)</option>
-            </select>
+            <label>Phone Number <span class="req">*</span></label>
+            <input id="ownerPhone" placeholder="(619) 555-1234" inputmode="tel" />
           </div>
         </div>
 
@@ -229,22 +209,6 @@
           <div>
             <label>Pet Name(s) <span class="req">*</span></label>
             <input id="petNames" placeholder="e.g., Coco / Lucky" />
-          </div>
-          <div>
-            <label>Vaccinated? <span class="req">*</span></label>
-            <select id="vaccinated">
-              <option value="">Select</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-              <option value="Not sure">Not sure</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div>
-            <label>Pet Birthday (approx) <span class="req">*</span></label>
-            <input id="petBirthday" type="date" />
           </div>
           <div>
             <label>Service <span class="req">*</span></label>
@@ -258,33 +222,20 @@
 
         <div class="form-row">
           <div>
-            <label>Preferred Date <span class="req">*</span></label>
-            <input id="date" type="date" />
+            <label>Preferred Date & Time <span class="req">*</span></label>
+            <input id="datetime" type="datetime-local" />
+            <div class="small" style="margin-top:6px">Closed Tuesdays • Hours 10:00 AM – 6:00 PM</div>
           </div>
-          <div>
-            <label>Preferred Time <span class="req">*</span></label>
-            <input id="time" type="time" />
-          </div>
-        </div>
-
-        <div class="form-row">
           <div>
             <label>Notes (optional)</label>
-            <textarea id="note" placeholder="Breed, temperament, special requests..."></textarea>
-          </div>
-          <div>
-            <label>Confirmation Reminder</label>
-            <div class="sub">
-              We will create a calendar reminder <b>1 day before</b> your appointment.
-              When the reminder pops up, open the calendar event and tap <b>Confirm</b> to send SMS.
-            </div>
+            <textarea id="note" placeholder="Breed, size, temperament, special requests..."></textarea>
           </div>
         </div>
 
         <div class="row">
           <button class="btn primary" type="button" onclick="submitBooking()">Submit Booking</button>
           <button class="btn ghost" type="button" onclick="clearForm()">Clear</button>
-          <a class="btn warn" href="sms:+16197540193">Send SMS Manually</a>
+          <a class="btn warn" href="sms:+16197540193">Text Us Manually</a>
         </div>
 
         <div id="err" class="error"></div>
@@ -314,8 +265,7 @@
         </div>
         <div class="row">
           <a class="btn success" href="tel:+16197540193">📞 Call</a>
-          <a class="btn primary" href="sms:+16197540193">💬 SMS</a>
-          <!-- ✅ Open Site 已去掉 -->
+          <a class="btn primary" href="sms:+16197540193">💬 Text</a>
         </div>
       </div>
       <div class="small" style="margin-top:10px;opacity:.8">© <span id="year"></span> Red Dolphin Pet Grooming</div>
@@ -324,7 +274,7 @@
 
   <div class="fab">
     <a class="call" href="tel:+16197540193">📞 Call</a>
-    <a class="sms" href="sms:+16197540193?&body=Hi%20I%20would%20like%20to%20book%20pet%20grooming.">💬 SMS</a>
+    <a class="sms" href="sms:+16197540193?&body=Hi%20Red%20Dolphin%20Pet%20Grooming,%20I%27d%20like%20to%20book%20an%20appointment.">💬 Text</a>
   </div>
 
   <script>
@@ -335,7 +285,7 @@
       el.textContent = msg;
       el.style.display = "block";
       document.getElementById("ok").style.display = "none";
-      scrollToId("book");
+      document.getElementById("book").scrollIntoView({behavior:"smooth", block:"start"});
     }
     function showOk(msg){
       const el = document.getElementById("ok");
@@ -344,57 +294,47 @@
       document.getElementById("err").style.display = "none";
     }
 
-    function scrollToId(id){
-      document.getElementById(id).scrollIntoView({behavior:"smooth", block:"start"});
-    }
-
     function clearForm(){
-      ["ownerName","ownerPhone","petNames","petBirthday","date","time","note"].forEach(id=>document.getElementById(id).value="");
-      document.getElementById("petCount").value="";
-      document.getElementById("petType").value="";
-      document.getElementById("vaccinated").value="";
+      ["ownerName","ownerPhone","petNames","datetime","note"].forEach(id=>document.getElementById(id).value="");
       document.getElementById("service").value="";
       document.getElementById("err").style.display="none";
       document.getElementById("ok").style.display="none";
     }
 
-    function buildBookingMessage(){
-      const ownerName  = (document.getElementById("ownerName").value || "").trim();
-      const ownerPhone = (document.getElementById("ownerPhone").value || "").trim();
-      const petCount   = document.getElementById("petCount").value;
-      const petType    = document.getElementById("petType").value;
-      const petNames   = (document.getElementById("petNames").value || "").trim();
-      const vaccinated = document.getElementById("vaccinated").value;
-      const petBirthday= document.getElementById("petBirthday").value;
-      const service    = document.getElementById("service").value;
-      const date       = document.getElementById("date").value;
-      const time       = document.getElementById("time").value;
-      const note       = (document.getElementById("note").value || "").trim();
-
-      return [
-        "Pet Grooming Booking",
-        `Owner: ${ownerName}`,
-        `Owner Phone: ${ownerPhone}`,
-        `Pets: ${petCount} (${petType})`,
-        `Pet Name(s): ${petNames}`,
-        `Vaccinated: ${vaccinated}`,
-        `Pet Birthday (approx): ${petBirthday}`,
-        `Service: ${service}`,
-        `Appointment Date: ${date}`,
-        `Appointment Time: ${time}`,
-        `Notes: ${note || "N/A"}`
-      ].join("\\n");
+    function formatLocalDT(dt){
+      // dt is Date
+      const opts = { weekday: "short", month:"short", day:"numeric", year:"numeric", hour:"numeric", minute:"2-digit" };
+      return dt.toLocaleString("en-US", opts);
     }
 
-    function makeConfirmSmsLink(ownerName, date, time, petNames){
-      const body = encodeURIComponent(`CONFIRM - ${ownerName} - ${date} ${time} - ${petNames}`);
+    function buildBookingMessage(ownerName, ownerPhone, petNames, service, dt, note){
+      // 更像美国人发短信
+      const when = formatLocalDT(dt);
+      const lines = [
+        `Hi Red Dolphin Pet Grooming, I'd like to book an appointment.`,
+        ``,
+        `Name: ${ownerName}`,
+        `Phone: ${ownerPhone}`,
+        `Pet(s): ${petNames}`,
+        `Service: ${service}`,
+        `Preferred time: ${when}`,
+        note ? `Notes: ${note}` : `Notes: N/A`,
+        ``,
+        `Thanks!`
+      ];
+      return lines.join("\n");
+    }
+
+    function makeConfirmSmsLink(ownerName, dtISO, petNames){
+      const dt = new Date(dtISO);
+      const when = formatLocalDT(dt);
+      const body = encodeURIComponent(`CONFIRM - ${ownerName} - ${when} - ${petNames}`);
       return `sms:${BUSINESS_PHONE}?&body=${body}`;
     }
 
-    // ✅ 生成 .ics：包含预约时间 + 前一天提醒（VALARM）
-    function downloadICS(ownerName, service, date, time, petNames){
-      // date: YYYY-MM-DD, time: HH:MM
-      const dtStart = new Date(`${date}T${time}:00`);
+    function downloadICS(ownerName, service, dtISO, petNames){
+      // dtISO: "YYYY-MM-DDTHH:MM"
+      const dtStart = new Date(dtISO);
       if (isNaN(dtStart.getTime())) return;
 
       // 默认时长 1 小时
@@ -402,11 +342,11 @@
 
       function pad(n){ return String(n).padStart(2,"0"); }
       function toICS(dt){
-        // 使用本地时间（不加Z），iOS/Google Calendar可识别
+        // 本地时间（不加Z），iOS/Google Calendar可识别
         return `${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}00`;
       }
 
-      const confirmLink = makeConfirmSmsLink(ownerName, date, time, petNames);
+      const confirmLink = makeConfirmSmsLink(ownerName, dtISO, petNames);
       const uid = `${Date.now()}-${Math.random().toString(16).slice(2)}@reddolphin`;
 
       const description =
@@ -442,7 +382,7 @@ END:VCALENDAR`;
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `Booking-${date}-${ownerName.replace(/\\s+/g,"_")}.ics`;
+      a.download = `Booking-${dtStart.getFullYear()}-${pad(dtStart.getMonth()+1)}-${pad(dtStart.getDate())}-${ownerName.replace(/\s+/g,"_")}.ics`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -462,30 +402,24 @@ END:VCALENDAR`;
     function submitBooking(){
       const ownerName  = (document.getElementById("ownerName").value || "").trim();
       const ownerPhone = (document.getElementById("ownerPhone").value || "").trim();
-      const petCount   = document.getElementById("petCount").value;
-      const petType    = document.getElementById("petType").value;
       const petNames   = (document.getElementById("petNames").value || "").trim();
-      const vaccinated = document.getElementById("vaccinated").value;
-      const petBirthday= document.getElementById("petBirthday").value;
       const service    = document.getElementById("service").value;
-      const date       = document.getElementById("date").value;
-      const time       = document.getElementById("time").value;
+      const dtISO      = document.getElementById("datetime").value; // "YYYY-MM-DDTHH:MM"
+      const note       = (document.getElementById("note").value || "").trim();
 
-      // ✅ 必填校验
-      if(!ownerName) return showError("Owner Name is required.");
-      if(!ownerPhone) return showError("Owner Phone is required.");
-      if(!petCount) return showError("Please select how many pets.");
-      if(!petType) return showError("Please select pet type.");
+      // Required validation
+      if(!ownerName) return showError("Full Name is required.");
+      if(!ownerPhone) return showError("Phone Number is required.");
       if(!petNames) return showError("Pet Name(s) is required.");
-      if(!vaccinated) return showError("Please select vaccination status.");
-      if(!petBirthday) return showError("Pet Birthday (approx) is required.");
       if(!service) return showError("Please select a service.");
-      if(!date) return showError("Preferred Date is required.");
-      if(!time) return showError("Preferred Time is required.");
+      if(!dtISO) return showError("Please select your preferred date & time.");
 
-      const msg = buildBookingMessage();
+      const dt = new Date(dtISO);
+      if(isNaN(dt.getTime())) return showError("Invalid date & time. Please try again.");
 
-      // 1) 尝试发到 Tawk（能发就发）
+      const msg = buildBookingMessage(ownerName, ownerPhone, petNames, service, dt, note);
+
+      // 1) Try send to Tawk (if supported)
       let sent = sendToTawk(msg);
       if(!sent){
         let tries = 0;
@@ -495,17 +429,16 @@ END:VCALENDAR`;
         }, 700);
       }
 
-      // 2) 下载日历文件，前一天提醒 + 事件内“点击确认”短信链接
-      downloadICS(ownerName, service, date, time, petNames);
+      // 2) Download calendar invite (1 day reminder)
+      downloadICS(ownerName, service, dtISO, petNames);
 
-      // 3) 打开短信（发给店里 619）
+      // 3) Open SMS to business number
       const smsBody = encodeURIComponent(msg);
       window.location.href = `sms:${BUSINESS_PHONE}?&body=${smsBody}`;
 
-      showOk("Submitted! Please send the SMS to confirm booking. A calendar reminder was downloaded (1 day before).");
+      showOk("Submitted! Please send the text message to confirm booking. A calendar reminder was downloaded (1 day before).");
     }
 
-    // Init
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
