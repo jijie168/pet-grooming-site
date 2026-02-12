@@ -3,212 +3,432 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Red Dolphin Pet Grooming</title>
-  <meta name="description" content="Pet grooming services with booking, live chat, SMS and maps." />
+  <title>Red Dolphin Pet Grooming | Chula Vista</title>
+  <meta name="description" content="Premium pet grooming in Chula Vista. Call or text to book. Bath & Brush, Full Grooming. Closed Tuesdays." />
+  <meta name="theme-color" content="#0b1220" />
 
   <style>
     :root{
-      --bg:#0b1220;
-      --card:#121a2b;
-      --text:#e9eefc;
-      --muted:#a8b3d6;
+      --bg:#070a12;
+      --bg2:#0b1220;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.04);
+      --text:#eef2ff;
+      --muted:rgba(238,242,255,.72);
       --line:rgba(255,255,255,.12);
-      --btn:#2b6cff;
-      --btn2:#22c55e;
-      --warn:#f59e0b;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 16px;
-      --max: 1080px;
+      --shadow:0 18px 50px rgba(0,0,0,.45);
+      --radius:18px;
+
+      --brand:#2b6cff;
+      --brand2:#22c55e;
+      --accent:#f59e0b;
+
+      --max:1120px;
     }
+
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b1220,#070b14);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif}
-    a{color:inherit}
-    .wrap{max-width:var(--max);margin:0 auto;padding:24px}
-    .nav{
-      position:sticky;top:0;z-index:20;
-      backdrop-filter: blur(10px);
-      background:rgba(7,11,20,.6);
-      border-bottom:1px solid var(--line);
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;
+      background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(43,108,255,.22), transparent 60%),
+        radial-gradient(900px 500px at 85% 5%, rgba(34,197,94,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+      letter-spacing:.2px;
     }
-    .nav-inner{max-width:var(--max);margin:0 auto;padding:12px 24px;display:flex;gap:14px;align-items:center;justify-content:space-between}
-    .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.2px}
-    .dot{width:10px;height:10px;border-radius:99px;background:var(--btn2);box-shadow:0 0 0 6px rgba(34,197,94,.12)}
-    .menu{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-    .menu a{padding:8px 10px;border-radius:10px;color:var(--muted);text-decoration:none;border:1px solid transparent}
-    .menu a:hover{color:var(--text);border-color:var(--line);background:rgba(255,255,255,.04)}
 
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
+    .glass{
+      background:linear-gradient(180deg, var(--card), var(--card2));
       border:1px solid var(--line);
-      border-radius:var(--radius);
       box-shadow:var(--shadow);
-      padding:18px;
+      border-radius:var(--radius);
     }
-    h1{margin:0 0 10px;font-size:34px;line-height:1.1}
-    .sub{color:var(--muted);line-height:1.6}
-    .pill{
-      display:inline-flex;gap:8px;align-items:center;
-      padding:8px 10px;border-radius:999px;background:rgba(43,108,255,.12);
-      border:1px solid rgba(43,108,255,.25);color:#cfe0ff;font-size:13px
-    }
-    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      padding:10px 12px;border-radius:12px;border:1px solid transparent;
-      text-decoration:none;font-weight:700;cursor:pointer
-    }
-    .btn.primary{background:var(--btn);border-color:rgba(43,108,255,.5)}
-    .btn.success{background:var(--btn2);border-color:rgba(34,197,94,.5);color:#05210f}
-    .btn.ghost{background:rgba(255,255,255,.04);border-color:var(--line);color:var(--text)}
-    .btn.warn{background:rgba(245,158,11,.16);border-color:rgba(245,158,11,.35)}
-    .section{padding:14px 0}
-    .section h2{margin:0 0 10px;font-size:24px}
-    .muted{color:var(--muted)}
-    .small{font-size:12px;color:var(--muted)}
-    .hr{height:1px;background:var(--line);margin:14px 0}
 
-    /* Services */
-    .service-title{font-size:30px;font-weight:900;margin:0 0 8px}
-    .service-sub{font-size:18px;color:#dbe4ff;opacity:.95;margin:0 0 10px;line-height:1.5}
-    .service-includes{font-size:18px;color:var(--text);opacity:.95;margin:0;line-height:1.6}
-    .service-card{padding:22px}
-
-    /* Booking form */
-    label{display:block;font-size:14px;color:#dbe4ff;margin:10px 0 6px}
-    .req{color:#ffb4b4;font-weight:800;margin-left:6px}
-    input,select,textarea{
-      width:100%;padding:12px 12px;border-radius:12px;
-      border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--text)
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:100;
+      backdrop-filter: blur(12px);
+      background:rgba(7,10,18,.55);
+      border-bottom:1px solid rgba(255,255,255,.10);
     }
-    textarea{min-height:92px;resize:vertical}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media (max-width:780px){.form-row{grid-template-columns:1fr}}
-    .notice{
-      padding:12px 14px;border-radius:12px;border:1px solid rgba(245,158,11,.35);
-      background:rgba(245,158,11,.12);color:#ffe7b5;font-size:14px;line-height:1.5
+    .topbar-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:10px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
     }
-    .error{
-      margin-top:10px;
-      padding:10px 12px;
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900;
+      letter-spacing:.3px;
+    }
+    .logoDot{
+      width:12px;height:12px;border-radius:999px;
+      background:linear-gradient(180deg, var(--brand2), #7cffc1);
+      box-shadow:0 0 0 7px rgba(34,197,94,.12);
+    }
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .nav a{
+      padding:8px 10px;
       border-radius:12px;
-      border:1px solid rgba(255,120,120,.35);
+      color:var(--muted);
+      border:1px solid transparent;
+    }
+    .nav a:hover{
+      color:var(--text);
+      border-color:rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+    }
+
+    .cta{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid transparent;
+      font-weight:800;
+      cursor:pointer;
+      user-select:none;
+      transition:transform .08s ease, background .2s ease, border-color .2s ease;
+      white-space:nowrap;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{background:rgba(43,108,255,.95); border-color:rgba(43,108,255,.55)}
+    .btn.success{background:rgba(34,197,94,.95); border-color:rgba(34,197,94,.55); color:#04160b}
+    .btn.ghost{background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.14); color:var(--text)}
+    .btn.warn{background:rgba(245,158,11,.14); border-color:rgba(245,158,11,.30)}
+
+    /* Hero */
+    .hero{
+      padding:26px 0 10px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width:980px){ .heroGrid{grid-template-columns:1fr} }
+
+    .heroCard{ padding:22px; }
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(43,108,255,.14);
+      border:1px solid rgba(43,108,255,.26);
+      color:#cfe0ff;
+      font-size:13px;
+      font-weight:700;
+    }
+    h1{
+      margin:12px 0 10px;
+      font-size:40px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    @media (max-width:540px){ h1{font-size:34px} }
+
+    .sub{
+      color:var(--muted);
+      line-height:1.65;
+      font-size:15px;
+    }
+    .kpis{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:10px;
+      margin-top:14px;
+    }
+    @media (max-width:740px){ .kpis{grid-template-columns:1fr 1fr} }
+    .kpi{
+      padding:12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+    }
+    .kpi .num{font-weight:900; font-size:16px}
+    .kpi .lbl{color:var(--muted); font-size:12px; margin-top:4px}
+
+    .heroActions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    /* Sections */
+    .section{ padding:18px 0; }
+    .sectionTitle{
+      font-size:22px;
+      margin:0 0 10px;
+      letter-spacing:-.2px;
+    }
+    .muted{color:var(--muted)}
+    .grid2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width:980px){ .grid2{grid-template-columns:1fr} }
+
+    /* Service cards (bigger text like you requested earlier) */
+    .serviceCard{ padding:22px; }
+    .serviceName{font-size:30px; font-weight:950; margin:0 0 8px}
+    .serviceSub{font-size:16px; color:#dde6ff; opacity:.95; margin:0 0 10px; line-height:1.5}
+    .serviceInc{font-size:16px; color:var(--text); opacity:.95; margin:0; line-height:1.6}
+
+    /* Booking */
+    .noteBox{
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(245,158,11,.28);
+      background:rgba(245,158,11,.12);
+      color:#ffe7b5;
+      line-height:1.5;
+      font-size:14px;
+    }
+
+    label{display:block; font-size:13px; color:#dbe4ff; margin:10px 0 6px}
+    .req{color:#ffb4b4; font-weight:900; margin-left:6px}
+
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.22);
+      color:var(--text);
+      outline:none;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color:rgba(43,108,255,.5);
+      box-shadow:0 0 0 4px rgba(43,108,255,.12);
+    }
+    textarea{min-height:96px; resize:vertical}
+
+    .formRow{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width:780px){ .formRow{grid-template-columns:1fr} }
+
+    .helper{font-size:12px; color:var(--muted); margin-top:6px}
+
+    .msg{
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      display:none;
+      line-height:1.5;
+      font-size:14px;
+    }
+    .msg.err{
+      border-color:rgba(255,120,120,.35);
       background:rgba(255,120,120,.12);
       color:#ffd4d4;
-      display:none;
-      font-size:14px;
-      line-height:1.5;
     }
-    .ok{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(34,197,94,.35);
+    .msg.ok{
+      border-color:rgba(34,197,94,.35);
       background:rgba(34,197,94,.12);
       color:#d9ffe8;
-      display:none;
-      font-size:14px;
-      line-height:1.5;
+    }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width:860px){ .gallery{grid-template-columns:1fr 1fr} }
+    @media (max-width:540px){ .gallery{grid-template-columns:1fr} }
+    .ph{
+      height:160px;
+      border-radius:18px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:rgba(255,255,255,.04);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      font-weight:700;
     }
 
     /* Map */
-    .map-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
-    iframe{display:block;width:100%;height:340px;border:0}
+    .mapWrap{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
+    }
+    iframe{display:block; width:100%; height:340px; border:0}
+
+    /* Footer */
+    .footer{
+      padding:14px 0 28px;
+      color:var(--muted);
+      font-size:12px;
+      opacity:.9;
+    }
 
     /* Floating buttons */
     .fab{
-      position:fixed;right:16px;bottom:18px;display:flex;flex-direction:column;gap:10px;z-index:50
+      position:fixed;
+      right:16px;
+      bottom:18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      z-index:150;
     }
     .fab a{
-      display:inline-flex;align-items:center;gap:10px;
-      background:rgba(18,26,43,.92);border:1px solid var(--line);
-      padding:10px 12px;border-radius:999px;text-decoration:none;color:var(--text);
-      box-shadow:var(--shadow)
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(18,26,43,.92);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:var(--shadow);
+      font-weight:800;
     }
     .fab .call{border-color:rgba(34,197,94,.35)}
     .fab .sms{border-color:rgba(43,108,255,.35)}
+    .fab .dir{border-color:rgba(245,158,11,.30)}
   </style>
 </head>
 
 <body>
-  <div class="nav">
-    <div class="nav-inner">
+  <!-- Top -->
+  <div class="topbar">
+    <div class="topbar-inner">
       <div class="brand">
-        <span class="dot"></span>
+        <span class="logoDot"></span>
         <span>Red Dolphin Pet Grooming</span>
       </div>
-      <div class="menu">
+      <div class="nav">
         <a href="#services">Services</a>
-        <a href="#book">Book Now</a>
+        <a href="#book">Book</a>
+        <a href="#gallery">Gallery</a>
         <a href="#location">Location</a>
         <a href="#contact">Contact</a>
+      </div>
+      <div class="cta">
+        <a class="btn success" href="tel:+16197540193">Call</a>
+        <a class="btn primary" href="sms:+16197540193?&body=Hi%20Red%20Dolphin%20Pet%20Grooming,%20I'd%20like%20to%20book%20an%20appointment.">Text</a>
       </div>
     </div>
   </div>
 
   <div class="wrap">
-    <div class="section">
-      <div class="card">
-        <span class="pill">Live chat • Text booking</span>
-        <h1>Professional Pet Grooming</h1>
-        <div class="sub">
-          Address: <b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>
-          Phone: <b>(619) 754-0193</b><br/>
-          Hours: <b>10:00 AM – 6:00 PM</b> (Closed Tuesdays)
+    <!-- Hero -->
+    <div class="hero">
+      <div class="heroGrid">
+        <div class="glass heroCard">
+          <span class="badge">Premium care • Clean salon • Text booking</span>
+          <h1>High-End Grooming.<br/>Calm, Clean, Comfortable.</h1>
+          <div class="sub">
+            <b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>
+            Phone: <b>(619) 754-0193</b><br/>
+            Hours: <b>10:00 AM – 6:00 PM</b> (Closed Tuesdays)
+          </div>
+
+          <div class="kpis">
+            <div class="kpi">
+              <div class="num">Gentle handling</div>
+              <div class="lbl">Comfort first, stress-free grooming</div>
+            </div>
+            <div class="kpi">
+              <div class="num">Clean tools</div>
+              <div class="lbl">Sanitized equipment & pet-safe products</div>
+            </div>
+            <div class="kpi">
+              <div class="num">Fast booking</div>
+              <div class="lbl">Call or text — quickest in the U.S.</div>
+            </div>
+          </div>
+
+          <div class="heroActions">
+            <a class="btn success" href="tel:+16197540193">📞 Call Now</a>
+            <a class="btn primary" href="#book">📅 Book Appointment</a>
+            <a class="btn ghost" href="https://www.google.com/maps?q=1680%20E%20Broadway%20Suite%20E,%20Chula%20Vista,%20CA" target="_blank" rel="noopener">📍 Get Directions</a>
+          </div>
         </div>
-        <div class="row">
-          <a class="btn success" href="tel:+16197540193">📞 Call</a>
-          <a class="btn primary" href="sms:+16197540193?&body=Hi%20Red%20Dolphin%20Pet%20Grooming,%20I%27d%20like%20to%20book%20an%20appointment.">💬 Text</a>
-          <a class="btn ghost" href="#book">📅 Book Now</a>
+
+        <div class="glass heroCard">
+          <div class="sectionTitle" style="margin-top:0">Quick Booking</div>
+          <div class="noteBox">
+            Fill the form in 20 seconds. We’ll open a text message with your details.
+            You’ll also get a calendar reminder <b>1 day before</b> to confirm.
+          </div>
+          <div class="heroActions" style="margin-top:14px">
+            <a class="btn primary" href="#book">Book Now</a>
+            <a class="btn ghost" href="#services">View Services</a>
+          </div>
+          <div class="sub" style="margin-top:14px">
+            Prefer a quick text instead? Tap <b>Text</b> in the top right.
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Services -->
     <div class="section" id="services">
-      <h2>Services</h2>
+      <div class="sectionTitle">Services</div>
       <div class="muted">Dogs by weight and coat length • Cats available</div>
 
-      <div class="card service-card" style="margin-top:12px">
-        <div class="service-title">Bath & Brush</div>
-        <div class="service-sub">Gentle bath, blow dry, brush-out</div>
-        <div class="service-includes">
-          Includes: nails, paw hair, conditioning, ears, and anal glands.
+      <div class="grid2" style="margin-top:12px">
+        <div class="glass serviceCard">
+          <div class="serviceName">Bath & Brush</div>
+          <div class="serviceSub">Gentle bath, blow dry, brush-out</div>
+          <p class="serviceInc">Includes: nails, paw hair, conditioning, ears, and anal glands.</p>
         </div>
-      </div>
 
-      <div class="card service-card" style="margin-top:14px">
-        <div class="service-title">Full Grooming</div>
-        <div class="service-sub">Bath + haircut + styling</div>
-        <div class="service-includes">
-          Includes: hair trimming, brushing, nail trimming, paw hair removal, conditioning, facial cleaning,
-          ear cleaning, and anal gland cleaning.
+        <div class="glass serviceCard">
+          <div class="serviceName">Full Grooming</div>
+          <div class="serviceSub">Bath + haircut + styling</div>
+          <p class="serviceInc">Includes: hair trimming, brushing, nail trimming, paw hair removal, conditioning, facial cleaning, ear cleaning, and anal gland cleaning.</p>
         </div>
       </div>
     </div>
 
-    <!-- ✅ Booking (美国习惯：简洁、合并时间) -->
+    <!-- Booking -->
     <div class="section" id="book">
-      <h2>Book Now</h2>
-      <div class="notice">
-        Fields marked with <b>*</b> are required. After you submit, we’ll open a text message with your booking details.
-        A calendar reminder will also download to help you <b>confirm 1 day before</b>.
+      <div class="sectionTitle">Book an Appointment</div>
+      <div class="noteBox">
+        Required fields are marked with <b>*</b>. Closed Tuesdays. Hours <b>10:00 AM – 6:00 PM</b>.
+        After submit: (1) we open a text message with your details, (2) a calendar reminder downloads for <b>1 day before</b> confirmation.
       </div>
 
-      <div class="card" style="margin-top:12px">
-        <div class="form-row">
+      <div class="glass" style="padding:22px; margin-top:12px">
+        <div class="formRow">
           <div>
             <label>Full Name <span class="req">*</span></label>
-            <input id="ownerName" placeholder="Your name" />
+            <input id="ownerName" placeholder="Your name" autocomplete="name" />
           </div>
           <div>
             <label>Phone Number <span class="req">*</span></label>
-            <input id="ownerPhone" placeholder="(619) 555-1234" inputmode="tel" />
+            <input id="ownerPhone" placeholder="(619) 555-1234" inputmode="tel" autocomplete="tel" />
           </div>
         </div>
 
-        <div class="form-row">
+        <div class="formRow">
           <div>
             <label>Pet Name(s) <span class="req">*</span></label>
             <input id="petNames" placeholder="e.g., Coco / Lucky" />
+            <div class="helper">Multiple pets? Just list names separated by “/”.</div>
           </div>
           <div>
             <label>Service <span class="req">*</span></label>
@@ -220,11 +440,11 @@
           </div>
         </div>
 
-        <div class="form-row">
+        <div class="formRow">
           <div>
             <label>Preferred Date & Time <span class="req">*</span></label>
             <input id="datetime" type="datetime-local" />
-            <div class="small" style="margin-top:6px">Closed Tuesdays • Hours 10:00 AM – 6:00 PM</div>
+            <div class="helper">We’ll confirm by text. (Closed Tuesdays)</div>
           </div>
           <div>
             <label>Notes (optional)</label>
@@ -232,21 +452,33 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="margin-top:14px">
           <button class="btn primary" type="button" onclick="submitBooking()">Submit Booking</button>
           <button class="btn ghost" type="button" onclick="clearForm()">Clear</button>
-          <a class="btn warn" href="sms:+16197540193">Text Us Manually</a>
+          <a class="btn warn" href="sms:+16197540193">Text Manually</a>
         </div>
 
-        <div id="err" class="error"></div>
-        <div id="ok" class="ok"></div>
+        <div id="err" class="msg err"></div>
+        <div id="ok" class="msg ok"></div>
       </div>
     </div>
 
+    <!-- Gallery (placeholders) -->
+    <div class="section" id="gallery">
+      <div class="sectionTitle">Gallery</div>
+      <div class="muted">Add your best before/after photos here (high-end clients love this).</div>
+      <div class="gallery" style="margin-top:12px">
+        <div class="ph">Photo 1</div>
+        <div class="ph">Photo 2</div>
+        <div class="ph">Photo 3</div>
+      </div>
+    </div>
+
+    <!-- Location -->
     <div class="section" id="location">
-      <h2>Location</h2>
-      <div class="muted">Find us on Google Maps.</div>
-      <div class="map-wrap" style="margin-top:12px">
+      <div class="sectionTitle">Location</div>
+      <div class="muted">Tap “Get Directions” for the fastest navigation.</div>
+      <div class="mapWrap" style="margin-top:12px">
         <iframe
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
@@ -255,60 +487,107 @@
       </div>
     </div>
 
+    <!-- Contact -->
     <div class="section" id="contact">
-      <h2>Contact</h2>
-      <div class="card">
+      <div class="sectionTitle">Contact</div>
+      <div class="glass" style="padding:22px">
         <div class="sub">
           Phone: <b>(619) 754-0193</b><br/>
           Address: <b>1680 E Broadway Suite E, Chula Vista, CA</b><br/>
           Live chat: bottom-right chat widget
         </div>
-        <div class="row">
+        <div class="row" style="margin-top:14px">
           <a class="btn success" href="tel:+16197540193">📞 Call</a>
-          <a class="btn primary" href="sms:+16197540193">💬 Text</a>
+          <a class="btn primary" href="sms:+16197540193?&body=Hi%20Red%20Dolphin%20Pet%20Grooming,%20I'd%20like%20to%20book%20an%20appointment.">💬 Text</a>
+          <a class="btn ghost" href="https://www.google.com/maps?q=1680%20E%20Broadway%20Suite%20E,%20Chula%20Vista,%20CA" target="_blank" rel="noopener">📍 Get Directions</a>
         </div>
       </div>
-      <div class="small" style="margin-top:10px;opacity:.8">© <span id="year"></span> Red Dolphin Pet Grooming</div>
+
+      <div class="footer">© <span id="year"></span> Red Dolphin Pet Grooming. All rights reserved.</div>
     </div>
   </div>
 
+  <!-- Floating quick actions -->
   <div class="fab">
     <a class="call" href="tel:+16197540193">📞 Call</a>
-    <a class="sms" href="sms:+16197540193?&body=Hi%20Red%20Dolphin%20Pet%20Grooming,%20I%27d%20like%20to%20book%20an%20appointment.">💬 Text</a>
+    <a class="sms" href="sms:+16197540193?&body=Hi%20Red%20Dolphin%20Pet%20Grooming,%20I'd%20like%20to%20book%20an%20appointment.">💬 Text</a>
+    <a class="dir" href="https://www.google.com/maps?q=1680%20E%20Broadway%20Suite%20E,%20Chula%20Vista,%20CA" target="_blank" rel="noopener">📍 Directions</a>
   </div>
 
   <script>
     const BUSINESS_PHONE = "+16197540193";
+    const CLOSED_WEEKDAY = 2; // Tuesday (0=Sun,1=Mon,2=Tue...)
+    const OPEN_HOUR = 10;     // 10:00 AM
+    const CLOSE_HOUR = 18;    // 6:00 PM (18:00)
+
+    function $(id){ return document.getElementById(id); }
 
     function showError(msg){
-      const el = document.getElementById("err");
+      const el = $("err");
       el.textContent = msg;
       el.style.display = "block";
-      document.getElementById("ok").style.display = "none";
-      document.getElementById("book").scrollIntoView({behavior:"smooth", block:"start"});
+      $("ok").style.display = "none";
+      $("book").scrollIntoView({behavior:"smooth", block:"start"});
     }
     function showOk(msg){
-      const el = document.getElementById("ok");
+      const el = $("ok");
       el.textContent = msg;
       el.style.display = "block";
-      document.getElementById("err").style.display = "none";
+      $("err").style.display = "none";
     }
 
     function clearForm(){
-      ["ownerName","ownerPhone","petNames","datetime","note"].forEach(id=>document.getElementById(id).value="");
-      document.getElementById("service").value="";
-      document.getElementById("err").style.display="none";
-      document.getElementById("ok").style.display="none";
+      ["ownerName","ownerPhone","petNames","datetime","note"].forEach(id=>$(id).value="");
+      $("service").value="";
+      $("err").style.display="none";
+      $("ok").style.display="none";
     }
 
     function formatLocalDT(dt){
-      // dt is Date
-      const opts = { weekday: "short", month:"short", day:"numeric", year:"numeric", hour:"numeric", minute:"2-digit" };
+      const opts = { weekday:"short", month:"short", day:"numeric", year:"numeric", hour:"numeric", minute:"2-digit" };
       return dt.toLocaleString("en-US", opts);
     }
 
+    // ===== Upgrade rules =====
+    function setMinDateTime(){
+      const input = $("datetime");
+      if(!input) return;
+      const now = new Date();
+      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+      input.min = now.toISOString().slice(0,16);
+    }
+
+    function validateBusinessRules(dt){
+      if (dt.getDay() === CLOSED_WEEKDAY) {
+        return "We are CLOSED on Tuesdays. Please choose another day.";
+      }
+      const h = dt.getHours();
+      // allow within 10:00 to 18:00 (end hour exclusive)
+      if (h < OPEN_HOUR || h >= CLOSE_HOUR) {
+        return "Please choose a time between 10:00 AM and 6:00 PM.";
+      }
+      const now = new Date();
+      if (dt.getTime() < now.getTime()) {
+        return "Please choose a future date & time.";
+      }
+      return "";
+    }
+
+    function onDateTimeChange(){
+      const v = $("datetime").value;
+      if(!v) return;
+      const dt = new Date(v);
+      if (isNaN(dt.getTime())) return;
+
+      const err = validateBusinessRules(dt);
+      if(err){
+        alert(err);
+        $("datetime").value = "";
+        $("datetime").focus();
+      }
+    }
+
     function buildBookingMessage(ownerName, ownerPhone, petNames, service, dt, note){
-      // 更像美国人发短信
       const when = formatLocalDT(dt);
       const lines = [
         `Hi Red Dolphin Pet Grooming, I'd like to book an appointment.`,
@@ -332,17 +611,15 @@
       return `sms:${BUSINESS_PHONE}?&body=${body}`;
     }
 
+    // Calendar invite with 1-day reminder + confirm link inside event
     function downloadICS(ownerName, service, dtISO, petNames){
-      // dtISO: "YYYY-MM-DDTHH:MM"
       const dtStart = new Date(dtISO);
       if (isNaN(dtStart.getTime())) return;
 
-      // 默认时长 1 小时
-      const dtEnd = new Date(dtStart.getTime() + 60*60*1000);
+      const dtEnd = new Date(dtStart.getTime() + 60*60*1000); // 1 hour
 
       function pad(n){ return String(n).padStart(2,"0"); }
       function toICS(dt){
-        // 本地时间（不加Z），iOS/Google Calendar可识别
         return `${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}00`;
       }
 
@@ -367,7 +644,7 @@ UID:${uid}
 DTSTAMP:${toICS(new Date())}
 DTSTART:${toICS(dtStart)}
 DTEND:${toICS(dtEnd)}
-SUMMARY:Pet Grooming - ${service}
+SUMMARY:Red Dolphin - ${service}
 DESCRIPTION:${description}
 LOCATION:1680 E Broadway Suite E, Chula Vista, CA
 BEGIN:VALARM
@@ -378,7 +655,7 @@ END:VALARM
 END:VEVENT
 END:VCALENDAR`;
 
-      const blob = new Blob([ics], {type: "text/calendar;charset=utf-8"});
+      const blob = new Blob([ics], {type:"text/calendar;charset=utf-8"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -400,26 +677,28 @@ END:VCALENDAR`;
     }
 
     function submitBooking(){
-      const ownerName  = (document.getElementById("ownerName").value || "").trim();
-      const ownerPhone = (document.getElementById("ownerPhone").value || "").trim();
-      const petNames   = (document.getElementById("petNames").value || "").trim();
-      const service    = document.getElementById("service").value;
-      const dtISO      = document.getElementById("datetime").value; // "YYYY-MM-DDTHH:MM"
-      const note       = (document.getElementById("note").value || "").trim();
+      const ownerName  = ($("ownerName").value || "").trim();
+      const ownerPhone = ($("ownerPhone").value || "").trim();
+      const petNames   = ($("petNames").value || "").trim();
+      const service    = $("service").value;
+      const dtISO      = $("datetime").value;
+      const note       = ($("note").value || "").trim();
 
-      // Required validation
       if(!ownerName) return showError("Full Name is required.");
       if(!ownerPhone) return showError("Phone Number is required.");
       if(!petNames) return showError("Pet Name(s) is required.");
       if(!service) return showError("Please select a service.");
-      if(!dtISO) return showError("Please select your preferred date & time.");
+      if(!dtISO) return showError("Please choose your preferred date & time.");
 
       const dt = new Date(dtISO);
       if(isNaN(dt.getTime())) return showError("Invalid date & time. Please try again.");
 
+      const ruleErr = validateBusinessRules(dt);
+      if(ruleErr) return showError(ruleErr);
+
       const msg = buildBookingMessage(ownerName, ownerPhone, petNames, service, dt, note);
 
-      // 1) Try send to Tawk (if supported)
+      // Try send to Tawk
       let sent = sendToTawk(msg);
       if(!sent){
         let tries = 0;
@@ -429,20 +708,26 @@ END:VCALENDAR`;
         }, 700);
       }
 
-      // 2) Download calendar invite (1 day reminder)
+      // Download reminder
       downloadICS(ownerName, service, dtISO, petNames);
 
-      // 3) Open SMS to business number
+      // Open SMS
       const smsBody = encodeURIComponent(msg);
       window.location.href = `sms:${BUSINESS_PHONE}?&body=${smsBody}`;
 
-      showOk("Submitted! Please send the text message to confirm booking. A calendar reminder was downloaded (1 day before).");
+      showOk("Submitted! Please send the text message to confirm. A calendar reminder was downloaded (1 day before).");
     }
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // Init
+    document.addEventListener("DOMContentLoaded", ()=>{
+      $("year").textContent = new Date().getFullYear();
+      setMinDateTime();
+      const input = $("datetime");
+      if(input) input.addEventListener("change", onDateTimeChange);
+    });
   </script>
 
-  <!-- Tawk.to -->
+  <!-- Tawk.to Live Chat -->
   <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
